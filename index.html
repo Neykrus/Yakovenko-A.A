@@ -1,217 +1,213 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин DOTA 2</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* Более темный фон */
-            color: #e2e8f0;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Андрій Яковенко — Менеджер з розвитку</title>
+  <meta name="description" content="Сайт‑візитка Андрія Яковенка: менеджер з розвитку / регіональний адміністратор роздрібної мережі. Досвід, досягнення, навички, контакти." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧩</text></svg>">
+  <!-- Шрифт із підтримкою кирилиці -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&text=АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя0123456789%20—–,.()%2F:+%25" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f16; --card:#121826; --muted:#a6b0c3; --text:#eaf2ff; --accent:#6ee7ff; --accent2:#a78bfa;
+      --ring:0 0 0 3px rgba(102, 204, 255, .25);
+    }
+    :root.light{ --bg:#f7f9fc; --card:#ffffff; --muted:#445069; --text:#0c1626; --accent:#0ea5e9; --accent2:#7c3aed; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:radial-gradient(1200px 600px at 10% -10%, rgba(111, 89, 255,.25), transparent 60%),radial-gradient(800px 500px at 100% 0, rgba(14,165,233,.25), transparent 60%), var(--bg);color:var(--text);}
+    .container{max-width:980px;margin:0 auto;padding:24px}
+    header{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center;margin-top:12px}
+    .avatar{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#0b0f16;font-weight:800;font-size:28px}
+    .title h1{margin:0;font-size:28px;letter-spacing:.2px}
+    .title p{margin:6px 0 0;color:var(--muted)}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{appearance:none;border:1px solid transparent;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111f;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+    .btn.secondary{background:transparent;border-color:rgba(255,255,255,.12);color:var(--text)}
+    .btn:focus-visible{outline:none;box-shadow:var(--ring);}
+
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:22px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr;}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01) 30%), var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px}
+    .card h2{margin:0 0 12px;font-size:18px}
+    .muted{color:var(--muted)}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);padding:8px 10px;border-radius:999px;margin:6px 6px 0 0}
+
+    .timeline{position:relative;margin:0;padding:0;list-style:none}
+    .timeline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));opacity:.4}
+    .timeline li{position:relative;margin:0 0 16px 0;padding-left:36px}
+    .dot{position:absolute;left:7px;top:.3em;width:14px;height:14px;border-radius:50%;background:linear-gradient(var(--accent),var(--accent2));box-shadow:0 0 0 3px rgba(0,0,0,.25)}
+    .job{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+    .job .where{font-weight:700}
+    .job .when{color:var(--muted)}
+    .job p{margin:.35rem 0 0}
+
+    .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .contact a{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid rgba(255,255,255,.08);padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--text)}
+    .contact a:hover{border-color:rgba(255,255,255,.22)}
+
+    footer{margin:26px 0;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    .toggle{background:transparent;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:var(--text);padding:8px 12px;cursor:pointer}
+    code.kbd{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.12)}
+  </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar" aria-hidden="true">АЯ</div>
+      <div class="title">
+        <h1>Андрій Яковенко</h1>
+        <p>Менеджер з розвитку / Регіональний адміністратор роздрібної мережі</p>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#contact" title="Звʼязатися">
+          <!-- phone svg -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.88 19.88 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.88 19.88 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z" fill="#08111f"/></svg>
+          Контакти
+        </a>
+        <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.pdf" download>Завантажити CV</a>
+      </div>
+    </header>
 
-    <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-2xl">
-        <h1 class="text-3xl font-bold text-center mb-2 text-yellow-300">Прайс-лист DOTA 2</h1>
-        <p class="text-center text-slate-400 mb-6">дота эскорт от андрея неукраса</p>
-        <p class="text-center text-slate-400 mb-8">
-            Выберите услуги и предметы, которые вы хотите заказать.
-        </p>
+    <main class="grid">
+      <section class="card" aria-labelledby="about">
+        <h2 id="about">Профіль</h2>
+        <p class="muted">Маю 5+ років досвіду у роздрібній торгівлі та управлінні магазинами. Підвищую продажі, формую асортиментні матриці, запускаю маркетингові кампанії та створюю навчальні матеріали для персоналу. Активно використовую AI для оптимізації рутини, створення лендингів і промо‑матеріалів. Готовий до релокації для професійного зростання.</p>
 
-        <form id="order-form">
-            <!-- Items Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8" id="item-list">
-                
-                <!-- Win (Победа в катке) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Победа в катке</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">20 грн</span>
-                    </div>
-                    <input type="number" data-name="Победа в катке" data-price="20" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
+        <div class="muted" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <span class="badge">Запоріжжя</span>
+          <span class="badge">Готовий до релокації</span>
+          <span class="badge">AI‑інструменти</span>
+          <span class="badge">1С</span>
+        </div>
+      </section>
 
-                <!-- Win Line (Выигранная линия) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Выигранная линия</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">10 грн</span>
-                    </div>
-                    <input type="number" data-name="Выигранная линия" data-price="10" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
-                
-                <!-- Ward (Вард) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Вард</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">5 грн</span>
-                    </div>
-                    <input type="number" data-name="Вард" data-price="5" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
+      <section class="card" aria-labelledby="skills">
+        <h2 id="skills">Навички</h2>
+        <div class="muted" style="display:flex;flex-wrap:wrap;gap:8px">
+          <span class="badge">Розвиток мережі</span>
+          <span class="badge">Асортиментна матриця</span>
+          <span class="badge">Планування та закупівлі</span>
+          <span class="badge">Підвищення маржі</span>
+          <span class="badge">Інвентаризації</span>
+          <span class="badge">Мерчандайзинг</span>
+          <span class="badge">SMM / промо</span>
+          <span class="badge">AI / автаматизація</span>
+          <span class="badge">Впевнений користувач ПК</span>
+          <span class="badge">Компʼютерне залізо</span>
+        </div>
+      </section>
 
-                <!-- Glimmer Cape (Глиммер) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Глиммер</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">70 грн</span>
-                    </div>
-                    <input type="number" data-name="Глиммер" data-price="70" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
-                
-                <!-- Force Staff (Форс) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Форс</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">50 грн</span>
-                    </div>
-                    <input type="number" data-name="Форс" data-price="50" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
-
-                <!-- Moon Shard (Мун шард) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Мун шард</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">75 грн</span>
-                    </div>
-                    <input type="number" data-name="Мун шард" data-price="75" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
-
-                <!-- Big Lotus (Большой Лотус) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">Большой Лотус</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">10 грн</span>
-                    </div>
-                    <input type="number" data-name="Большой Лотус" data-price="10" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
-                
-                <!-- 3 Aegis (3 Аегиса) -->
-                <div class="bg-gray-700 p-4 rounded-xl shadow-lg flex items-center justify-between">
-                    <div class="flex-1">
-                        <h2 class="font-bold text-xl">3 Аегиса</h2>
-                        <span class="text-yellow-300 text-lg font-semibold">200 грн</span>
-                    </div>
-                    <input type="number" data-name="3 Аегиса" data-price="200" value="0" min="0" class="w-20 ml-4 p-2 bg-gray-900 text-white rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                </div>
+      <section class="card" aria-labelledby="exp" style="grid-column:1/-1">
+        <h2 id="exp">Досвід</h2>
+        <ul class="timeline">
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="job">
+              <div class="where">Менеджер з розвитку vape‑напрямку — S.V Group, Запоріжжя</div>
+              <div class="when">04.2025 – нині</div>
             </div>
-
-            <!-- Total and Order Button -->
-            <div class="flex flex-col sm:flex-row items-center justify-between mb-6 border-t pt-6 border-gray-700">
-                <div class="text-xl font-bold mb-4 sm:mb-0">Итого: <span id="total-price" class="text-yellow-300">0 грн</span></div>
-                <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-yellow-500 text-gray-900 font-bold rounded-lg shadow-xl hover:bg-yellow-400 transition-colors">
-                    Оформить заказ
-                </button>
+            <p>+22% до валу вже у перший місяць і одночасне підвищення маржинальності. Виїзди на ТТ, навчання продавців, аудити, звіти та регламенти. Запуск маркетингових акцій. Робота з торговим обладнанням. Закупівлі та створення асортиментної матриці. Розробка навчальних матеріалів.</p>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="job">
+              <div class="where">Регіональний адміністратор — UVape, Полтава</div>
+              <div class="when">10.2024 – 04.2025</div>
             </div>
-            
-            <!-- Message Area -->
-            <div id="message" class="text-center text-green-400 font-semibold hidden"></div>
+            <p>Контроль залишків і щотижневі замовлення. Інвентаризації, відкриття/переїзди ТТ. Підрядники: ремонти, логістика, реклама. Кадрові процеси. Щомісячне виконання планів продажів, закриття кадрового дефіциту.</p>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="job">
+              <div class="where">Керуючий магазином — Vape Station, Полтава</div>
+              <div class="when">04.2023 – 09.2024</div>
+            </div>
+            <p>Організація бізнес‑процесів, стандартизація торгівлі, навчання команди. +80% до прибутку за рік. Координація персоналу та SMM, контент (reels), тексти для соцмереж.</p>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true"></span>
+            <div class="job">
+              <div class="where">Продавець‑консультант → Заступник директора — Moyo, Полтава</div>
+              <div class="when">04.2019 – 03.2020</div>
+            </div>
+            <p>Найвищі продажі серед колег, успішні перевірки «таємного покупця», підвищення до заступника директора за 11 місяців.</p>
+          </li>
+        </ul>
+      </section>
 
-        </form>
-    </div>
+      <section class="card" aria-labelledby="edu">
+        <h2 id="edu">Освіта</h2>
+        <p><strong>ПолтНТУ ім. Ю. Кондратюка</strong> — Фінанси, банківська справа та страхування (2018–2020)</p>
+        <p><strong>Коледж управління економіки та права ПДАА</strong> — Оціночна діяльність (2015–2018)</p>
+      </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('order-form');
-            const items = document.querySelectorAll('#item-list input[type="number"]');
-            const totalPriceEl = document.getElementById('total-price');
-            const messageEl = document.getElementById('message');
+      <section class="card" aria-labelledby="contact" id="contact">
+        <h2 id="contact">Контакти</h2>
+        <div class="contact">
+          <a href="tel:+380993586621" title="Подзвонити">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.88 19.88 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.88 19.88 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z"/></svg>
+            +38 (099) 358‑66‑21
+          </a>
+          <a href="mailto:neykrus@gmail.com" title="Написати лист">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13l8-6.99V6H4zm0 12h16V8l-8 7L4 8v10z"/></svg>
+            neykrus@gmail.com
+          </a>
+          <a href="https://t.me/" target="_blank" rel="noopener" title="Telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.04 15.46l-.37 5.2c.53 0 .76-.23 1.03-.5l2.48-2.38 5.14 3.77c.94.52 1.61.25 1.87-.87l3.39-15.9h.01c.3-1.39-.5-1.93-1.4-1.6L1.4 9.7C.04 10.22.06 11 .96 11.3l5.2 1.62L19.37 5.8c.64-.42 1.22-.19.74.23"/></svg>
+            Telegram
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 6.5A2.5 2.5 0 1 1 4 4a2.5 2.5 0 0 1 2.5 2.5zM3 8h7v13H3zM14 8h6v3.85h.08a6.6 6.6 0 0 1 5.92-3.85C28.5 8 30 9.58 30 13.38V21H23v-6.5c0-1.56-.56-2.62-1.96-2.62a2.12 2.12 0 0 0-1.99 1.42 2.67 2.67 0 0 0-.13.94V21h-7z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </section>
+    </main>
 
-            // Listen for changes in quantity inputs to update the total price
-            items.forEach(input => {
-                input.addEventListener('input', () => {
-                    let total = 0;
-                    items.forEach(item => {
-                        const price = parseFloat(item.dataset.price);
-                        const quantity = parseInt(item.value);
-                        if (!isNaN(price) && !isNaN(quantity) && quantity > 0) {
-                            total += price * quantity;
-                        }
-                    });
-                    totalPriceEl.textContent = `${total} грн`;
-                });
-            });
+    <footer>
+      <div>© <span id="year"></span> Андрій Яковенко</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="toggle" id="modeToggle" type="button" aria-label="Перемикач теми">🌓 Тема</button>
+        <span class="muted">Натисніть <code class="kbd">T</code> для перемикання</span>
+      </div>
+    </footer>
+  </div>
 
-            // Handle form submission
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                // Collect selected items and their quantities
-                const order = [];
-                items.forEach(item => {
-                    const quantity = parseInt(item.value);
-                    if (quantity > 0) {
-                        const name = item.dataset.name;
-                        const price = parseFloat(item.dataset.price);
-                        order.push({ name, quantity, price });
-                    }
-                });
+  <script>
+    // Рік у футері
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-                if (order.length === 0) {
-                    messageEl.textContent = 'Пожалуйста, выберите хотя бы один товар.';
-                    messageEl.classList.remove('hidden', 'text-green-400');
-                    messageEl.classList.add('text-red-400');
-                    return;
-                }
+    // Збереження теми у localStorage
+    const root = document.documentElement;
+    const apply = (m)=>{ root.classList.toggle('light', m==='light'); };
+    const saved = localStorage.getItem('mode');
+    if(saved){ apply(saved); }
+    document.getElementById('modeToggle').addEventListener('click', ()=>{
+      const next = root.classList.contains('light') ? 'dark' : 'light';
+      apply(next);
+      localStorage.setItem('mode', next);
+    });
+    // Гаряча клавіша T
+    document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='t'){ document.getElementById('modeToggle').click(); }});
+  </script>
 
-                const total = order.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-                // Create the message for the email
-                let orderDetails = 'Новый заказ:\n\n';
-                order.forEach(item => {
-                    orderDetails += `${item.name}: ${item.quantity} шт. (${item.price * item.quantity} грн)\n`;
-                });
-                orderDetails += `\nИтого: ${total} грн`;
-
-                // --- Placeholder for a real email sending API call ---
-                // For security reasons, you cannot send emails directly from client-side JavaScript.
-                // You need a backend service or a third-party service like EmailJS.
-                // This code demonstrates the structure of such a request.
-
-                // Example using fetch to a hypothetical server endpoint:
-                try {
-                    // This is a placeholder. Replace with your actual backend endpoint.
-                    // const response = await fetch('YOUR_BACKEND_ENDPOINT', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //     },
-                    //     body: JSON.stringify({
-                    //         to: 'neylkrus@gmail.com',
-                    //         subject: 'Новый заказ с сайта DOTA 2',
-                    //         body: orderDetails
-                    //     }),
-                    // });
-                    
-                    // const result = await response.json();
-                    
-                    // if (response.ok) {
-                    //     messageEl.textContent = 'Заказ успешно отправлен!';
-                    //     messageEl.classList.remove('text-red-400', 'hidden');
-                    //     messageEl.classList.add('text-green-400');
-                    //     form.reset();
-                    // } else {
-                    //     throw new Error(result.error || 'Произошла ошибка при отправке заказа.');
-                    // }
-
-                    // Since a backend is not available, we show a success message as a mock response.
-                    messageEl.textContent = 'Заказ успешно оформлен! (Имитация отправки)';
-                    messageEl.classList.remove('text-red-400', 'hidden');
-                    messageEl.classList.add('text-green-400');
-                    form.reset();
-
-                } catch (error) {
-                    console.error('Ошибка отправки:', error);
-                    messageEl.textContent = `Ошибка при отправке: ${error.message}`;
-                    messageEl.classList.remove('text-green-400', 'hidden');
-                    messageEl.classList.add('text-red-400');
-                }
-            });
-        });
-    </script>
+  <!-- Структуровані дані (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Андрій Яковенко",
+    "jobTitle": "Менеджер з розвитку / Регіональний адміністратор",
+    "address": {"@type":"PostalAddress","addressLocality":"Запоріжжя","addressCountry":"UA"},
+    "email": "mailto:neykrus@gmail.com",
+    "telephone": "+380993586621",
+    "url": "https://example.com",
+    "sameAs": ["https://t.me/", "https://www.linkedin.com/"]
+  }
+  </script>
 </body>
 </html>
