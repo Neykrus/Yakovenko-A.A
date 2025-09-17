@@ -3,123 +3,223 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b0f16" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070910" />
   <title>Андрій Яковенко — Менеджер з розвитку</title>
-  <meta name="description" content="Сайт‑візитка Андрія Яковенка: менеджер з розвитку / регіональний адміністратор роздрібної мережі." />
+  <meta name="description" content="Сайт‑візитка Андрія Яковенка: менеджер з розвитку / регіональний адміністратор. Досвід, навички, контакти." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.png">
   <style>
-    :root{--bg:#0b0f16;--text:#eaf2ff;--muted:#a7b0c4;--card:rgba(12,17,27,.74);--outline:rgba(255,255,255,.1);--accent:#22d3ee;--accent2:#a78bfa}
-    @media (prefers-color-scheme: light){:root{--bg:#f6f8fc;--text:#0c1626;--muted:#485268;--card:#ffffffcc;--outline:rgba(15,23,42,.1)}}
+    :root{
+      --bg:#070910; --panel:#0e1421; --muted:#8ea1c0; --text:#eaf2ff;
+      --a:#5ef0ff; --b:#a78bfa; --ok:#34d399; --warn:#fb923c;
+      --outline:rgba(255,255,255,.10);
+      --ring:0 0 0 3px rgba(94,240,255,.35);
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;overflow-x:hidden}
+    /* --- Neon animated background --- */
     .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
-    .gradient{position:absolute;inset:-20%;filter:blur(70px);opacity:.7;background:conic-gradient(from 0deg at 50% 50%,#22d3ee,#a78bfa,#22d3ee);animation:spin 20s linear infinite}
-    @keyframes spin{to{transform:rotate(1turn)}}
-    .container{max-width:1120px;margin:0 auto;padding:20px}
-    .nav{position:sticky;top:0;backdrop-filter:blur(12px);background:color-mix(in oklab, var(--card) 85%, transparent);z-index:50;border-bottom:1px solid var(--outline)}
-    .nav-inner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 16px}
-    .brand{font-weight:800}
-    .links{display:flex;gap:10px;flex-wrap:wrap}
-    .nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px}
-    .nav a:active{background:rgba(255,255,255,.06)}
-    .hero{display:grid;grid-template-columns:180px 1fr auto;gap:18px;align-items:center;margin:22px 0}
-    .photo{width:180px;aspect-ratio:1/1;border-radius:24px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 10px 35px rgba(0,0,0,.4)}
+    .f1,.f2,.f3{
+      position:absolute; border-radius:50%;
+      filter:blur(60px); opacity:.45; mix-blend-mode:screen;
+      animation:float 18s ease-in-out infinite;
+    }
+    .f1{background:radial-gradient(80% 80% at 30% 30%, rgba(94,240,255,.8), transparent 70%); width:55vw; height:55vw; left:-10%; top:-10%}
+    .f2{background:radial-gradient(80% 80% at 70% 70%, rgba(167,139,250,.7), transparent 70%); width:60vw; height:60vw; right:-15%; top:-5%; animation-duration:22s}
+    .f3{background:radial-gradient(80% 80% at 50% 50%, rgba(94,240,255,.55), transparent 70%); width:45vw; height:45vw; left:-10%; bottom:-10%; animation-duration:20s}
+    @keyframes float{0%,100%{transform:translateY(-2%)}50%{transform:translateY(3%)}}
+    @media (prefers-reduced-motion:reduce){ .f1,.f2,.f3{animation:none} }
+
+    /* --- Layout --- */
+    .wrap{max-width:1120px;margin:0 auto;padding:18px}
+    @media (max-width:960px){ .wrap{padding:14px} }
+
+    /* --- Header / Nav --- */
+    .nav{position:sticky; top:0; z-index:10; backdrop-filter:blur(12px);
+         background:linear-gradient(180deg, rgba(0,0,0,.35), transparent),
+                    color-mix(in oklab, var(--panel) 80%, transparent);
+         border-bottom:1px solid var(--outline);}
+    .nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand .mark{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#06101a;font-weight:800}
+    .brand h1{margin:0;font-size:18px;letter-spacing:.3px}
+    .links{display:flex;gap:12px;flex-wrap:wrap}
+    .links a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px;position:relative}
+    .links a::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--a),var(--b));transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+    .links a:hover::after{transform:scaleX(1)}
+
+    /* --- Hero --- */
+    .hero{display:grid;grid-template-columns:1fr;gap:16px;align-items:center;margin:22px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01) 30%), var(--panel);
+          border:1px solid var(--outline); border-radius:16px; padding:18px; backdrop-filter:blur(8px)}
+    .hero-inner{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center}
+    .photo{width:120px;aspect-ratio:1/1;border-radius:18px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 12px 38px rgba(0,0,0,.45)}
     .photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-    .title h1{margin:0;font-size:40px;line-height:1.1}
-    .title p{margin:6px 0 0;color:var(--muted)}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-self:end}
-    .btn{padding:12px 16px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s ease}
-    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b0f16}
-    .btn.secondary{border:1px solid var(--outline);color:var(--text)}
-    .btn:hover{transform:translateY(-2px)}
-    .card{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px;margin:18px 0;backdrop-filter:blur(10px)}
-    .card h2{margin-top:0}
-    .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .contact a{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--card);border-radius:12px;text-decoration:none;color:var(--text);border:1px solid var(--outline)}
-    .contact a:active{background:rgba(255,255,255,.06)}
-    footer{margin:24px 0;color:var(--muted);text-align:center}
-    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+    .title h2{margin:0 0 4px;font-family:Orbitron,Inter,sans-serif;font-size:28px;letter-spacing:.5px;text-shadow:0 0 18px rgba(94,240,255,.35)}
+    .title p{margin:0;color:var(--muted)}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{appearance:none;border:1px solid transparent;background:linear-gradient(135deg,var(--a),var(--b));color:#07121f;padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-flex;gap:8px;align-items:center;transition:transform .15s ease, box-shadow .2s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 0 0 4px rgba(94,240,255,.15)}
+    .btn.outline{background:transparent;border-color:var(--outline);color:var(--text)}
+
+    /* --- Sections --- */
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin:16px 0}
+    @media (max-width:960px){ .grid{grid-template-columns:1fr} .hero-inner{grid-template-columns:1fr; text-align:center; justify-items:center} .photo{width:min(200px,58vw)} .cta{justify-content:center} }
+    h3{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--outline)}
+    .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .kpi{background:linear-gradient(180deg, rgba(255,255,255,.05), transparent), var(--panel);border:1px solid var(--outline);border-radius:12px;padding:10px}
+    .kpi .num{font-weight:800;font-size:20px;color:var(--ok)}
+
+    /* --- Timeline --- */
+    .timeline{position:relative;margin:0;padding:0;list-style:none}
+    .timeline::before{content:\"\";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--a),var(--b));opacity:.5}
+    .timeline li{position:relative;margin:0 0 16px;padding-left:36px}
+    .dot{position:absolute;left:7px;top:.35em;width:14px;height:14px;border-radius:50%;background:linear-gradient(var(--a),var(--b));box-shadow:0 0 0 3px rgba(0,0,0,.25)}
+    .job{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+    .job .where{font-weight:700}
+    .job .when{color:var(--muted)}
+    .job p{margin:.35rem 0 0}
+
+    /* --- Contact --- */
+    .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .contact a{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--outline);padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--text)}
+    .contact a:hover{box-shadow:0 0 0 4px rgba(94,240,255,.12)}
+
+    /* --- Reveal --- */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
     .reveal.show{opacity:1;transform:none}
-    .qr{margin-top:12px;text-align:center}
-    .qr img{width:180px;max-width:60vw;height:auto;image-rendering:pixelated;border-radius:12px;border:1px solid var(--outline);background:#fff;padding:6px}
-    @media (max-width:820px){
-      .container{padding:16px}
-      .nav-inner{padding:8px 12px}
-      .hero{grid-template-columns:1fr;justify-items:center;text-align:center}
-      .actions{justify-self:center}
-      .title h1{font-size:32px}
-      .photo{width:min(56vw,200px)}
-      .btn{width:100%;justify-content:center}
-    }
-    @media (min-width:821px) and (max-width:1040px){
-      .container{padding:18px}
-      .title h1{font-size:36px}
-    }
   </style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true"><div class="gradient"></div></div>
-  <nav class="nav" aria-label="Головна навігація">
+  <!-- Neon background -->
+  <div class="bg" aria-hidden="true">
+    <div class="f1"></div><div class="f2"></div><div class="f3"></div>
+  </div>
+
+  <!-- Nav -->
+  <div class="nav">
     <div class="nav-inner">
-      <div class="brand">Андрій Яковенко</div>
+      <div class="brand"><div class="mark">АЯ</div><h1>Андрій Яковенко</h1></div>
       <div class="links">
-        <a href="#about">Профіль</a>
-        <a href="#skills">Навички</a>
+        <a href="#about">Про мене</a>
         <a href="#exp">Досвід</a>
+        <a href="#skills">Навички</a>
         <a href="#contact">Контакти</a>
       </div>
     </div>
-  </nav>
-  <div class="container">
-    <header class="hero">
-      <div class="photo reveal">
-        <img src="assets/photo.jpg" alt="Фото — Андрій Яковенко" loading="eager" />
+  </div>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="card hero reveal" id="top">
+      <div class="hero-inner">
+        <div class="photo"><img src="assets/photo_hero.jpg" alt="Фото — Андрій Яковенко"></div>
+        <div class="title">
+          <h2>Менеджер з розвитку / Регіональний адміністратор</h2>
+          <p class="muted">Піднімаю виручку та маржу системно: процеси, аналітика, маркетинг, команда. Активно використовую AI. Готовий до релокації.</p>
+          <div class="cta">
+            <a class="btn" href="#contact">Звʼязатися</a>
+            <a class="btn outline" href="assets/Резюме_Андрій_Яковенко.pdf" download>PDF‑резюме</a>
+            <a class="btn outline" href="assets/Резюме_Андрій_Яковенко.docx" download>Word‑резюме</a>
+          </div>
+        </div>
       </div>
-      <div class="title reveal">
-        <h1>Андрій Яковенко</h1>
-        <p>Менеджер з розвитку / Регіональний адміністратор</p>
-      </div>
-      <div class="actions reveal" style="transition-delay:.05s">
-        <a class="btn primary" href="#contact">Звʼязатися</a>
-        <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.pdf" download>PDF‑резюме</a>
-        <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.docx" download>Word‑резюме</a>
-      </div>
-    </header>
-    <section class="card reveal" id="about">
-      <h2>Про мене</h2>
-      <p>Я — менеджер із розвитку та адміністратор роздрібної мережі з 5+ роками досвіду. Піднімаю виручку та маржу системно: аналітика, маркетинг, закупівлі, навчальні матеріали для персоналу. Активно використовую AI, створюю лендинги та промо‑матеріали. Готовий до релокації.</p>
     </section>
-    <section class="card reveal" id="skills">
-      <h2>Навички</h2>
-      <p>Розвиток мережі, асортиментна матриця, планування та закупівлі, підвищення маржі, інвентаризації, мерчандайзинг, SMM/промо, AI‑автоматизація, впевнений користувач ПК і «заліза».</p>
+
+    <!-- ABOUT + KPIs -->
+    <section class="grid">
+      <article class="card reveal" id="about">
+        <h3>Про мене</h3>
+        <p>Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку з 5+ роками досвіду у ритейлі. Вмію переводити хаос у налагоджені процеси, які дають прогнозований результат. Мій фокус — асортимент, закупівлі, операційка, комунікація з підрядниками та діджитал‑просування.</p>
+        <div class="badges" style="margin-top:8px">
+          <span class="badge">AI‑інструменти</span>
+          <span class="badge">Асортиментна матриця</span>
+          <span class="badge">Інвентаризації</span>
+          <span class="badge">SMM / промо</span>
+          <span class="badge">1С</span>
+          <span class="badge">Компʼютерне «залізо»</span>
+          <span class="badge">Готовий до релокації</span>
+        </div>
+      </article>
+      <aside class="card reveal">
+        <h3>Ключові результати</h3>
+        <div class="kpis">
+          <div class="kpi"><div class="num">+22%</div><div class="muted">Зростання виручки (1‑й місяць у S.V Group)</div></div>
+          <div class="kpi"><div class="num">+80%</div><div class="muted">Зростання прибутку за рік (Vape Station, командою)</div></div>
+          <div class="kpi"><div class="num">10+ ТТ</div><div class="muted">Щотижневі замовлення та контроль запасів (UVape)</div></div>
+        </div>
+      </aside>
     </section>
+
+    <!-- EXPERIENCE -->
     <section class="card reveal" id="exp">
-      <h2>Досвід</h2>
-      <p><strong>S.V Group</strong> — Менеджер з розвитку vape‑напрямку (04.2025 – нині): +22% валу у 1‑й місяць, підвищення маржинальності, виїзди на ТТ, аудити, звіти/регламенти, маркетингові акції, робота з обладнанням, закупівлі та асортиментна матриця, навчальні матеріали.</p>
-      <p><strong>UVape</strong> — Регіональний адміністратор (10.2024 – 04.2025): контроль залишків, щотижневі замовлення, інвентаризації, відкриття/переїзди ТТ, підрядники, кадрові процеси, виконання планів продажів.</p>
-      <p><strong>Vape Station</strong> — Керуючий магазином (04.2023 – 09.2024): стандартизація торгівлі, навчання команди, +80% прибутку за рік, координація SMM/контенту.</p>
-      <p><strong>Moyo</strong> — Продавець → Заступник директора (04.2019 – 03.2020): топ‑продажі, «таємний покупець», підвищення за 11 місяців.</p>
+      <h3>Досвід</h3>
+      <ul class="timeline">
+        <li>
+          <span class="dot"></span>
+          <div class="job">
+            <div class="where">S.V Group — Менеджер з розвитку vape‑напрямку</div>
+            <div class="when">04.2025 – нині</div>
+          </div>
+          <p>За перший місяць забезпечив <strong>+22% зростання виручки</strong> із підвищенням маржинальності. Виїзди на ТТ, практичне навчання продавців, аудити, звіти та регламенти. Маркетингові акції, робота з обладнанням. Закупівлі та формування асортиментної матриці. Створення навчальних матеріалів для персоналу.</p>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <div class="job">
+            <div class="where">UVape — Регіональний адміністратор</div>
+            <div class="when">10.2024 – 04.2025</div>
+          </div>
+          <p>Щотижневі замовлення для <strong>10+ магазинів</strong> на основі аналізу залишків та попиту. Інвентаризації, відкриття та переїзди ТТ. Координація підрядників (ремонти, логістика, реклама). Рішення кадрових задач і стабільне виконання планів продажів.</p>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <div class="job">
+            <div class="where">Vape Station — Керуючий магазином</div>
+            <div class="when">04.2023 – 09.2024</div>
+          </div>
+          <p>Організація й стандартизація процесів. <strong>Активна участь у SMM</strong> (контент, reels, тексти) разом із командою. Виконання/перевиконання планів. <strong>+80% прибутку за рік</strong> як результат комплексних змін у роботі команди.</p>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <div class="job">
+            <div class="where">Moyo — Продавець‑консультант → Заступник директора</div>
+            <div class="when">04.2019 – 03.2020</div>
+          </div>
+          <p>Стабільне виконання плану продажів і високі показники сервісу (NPS). Успішні перевірки «таємного покупця». Підвищення до заступника директора завдяки результатам роботи та управлінню змінами в команді.</p>
+        </li>
+      </ul>
     </section>
+
+    <!-- SKILLS -->
+    <section class="card reveal" id="skills">
+      <h3>Навички</h3>
+      <p><strong>Управління мережею:</strong> закупівлі, аналітика, асортимент, стандартизація процесів. <strong>Маркетинг:</strong> акції, промо, SMM, контент. <strong>Digital & AI:</strong> автоматизація задач, створення лендингів і промо‑матеріалів. <strong>Операційка:</strong> інвентаризації, звітність, робота з обладнанням. <strong>Техніка:</strong> впевнений користувач ПК та «заліза».</p>
+    </section>
+
+    <!-- CONTACT -->
     <section class="card reveal" id="contact">
-      <h2>Контакти</h2>
+      <h3>Контакти</h3>
       <div class="contact">
         <a href="tel:+380993586621">📞 +38 (099) 358‑66‑21</a>
         <a href="mailto:neykrus@gmail.com">✉️ neykrus@gmail.com</a>
-        <a href="https://t.me/ваш_нік" target="_blank" rel="noopener">💬 Telegram</a>
-      </div>
-      <div class="qr">
-        <p class="muted">Швидкий перехід у Telegram</p>
-        <img src="assets/telegram-qr.png" alt="QR‑код Telegram" loading="lazy">
+        <a href="https://t.me/Neykrus" target="_blank" rel="noopener">💬 Telegram @Neykrus</a>
       </div>
     </section>
-    <footer>© <span id="year"></span> Андрій Яковенко</footer>
+
+    <footer class="muted" style="text-align:center;margin:16px 0">© <span id="year"></span> Андрій Яковенко</footer>
   </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');}})},{threshold:.18});
+    // Scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold:.14 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 </body>
