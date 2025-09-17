@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#ffffff" />
   <title>Андрій Яковенко — Менеджер з розвитку</title>
-  <meta name="description" content="Сайт‑візитка Андрія Яковенка у світлому мінімалістичному стилі: досвід, навички, контакти." />
+  <meta name="description" content="Сайт‑візитка Андрія Яковенка: досвід, навички, контакти. Світлий мінімалістичний стиль з анімаціями." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    html{scroll-behavior:smooth; scroll-padding-top: 80px;}
     :root{
       --bg:#ffffff; --text:#0c1626; --muted:#5f6b7c;
       --card:#f8f9fb; --accent:#007aff; --accent2:#5e5ce6;
@@ -19,15 +18,37 @@
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
 
-    /* Background subtle gradient */
-    body::before{
-      content:"";position:fixed;inset:0;z-index:-1;
-      background:radial-gradient(circle at 20% 20%, rgba(0,122,255,.08), transparent 60%),
-                 radial-gradient(circle at 80% 80%, rgba(94,92,230,.08), transparent 60%);
+    /* Анімований фон */
+    body::before, body::after{
+      content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;
+      background:radial-gradient(30% 30% at 15% 20%, rgba(0,122,255,.10), transparent 60%),
+                 radial-gradient(30% 30% at 80% 70%, rgba(94,92,230,.10), transparent 60%);
+      animation:bgfloat 16s ease-in-out infinite;
+    }
+    body::after{
+      opacity:.75;
+      background:radial-gradient(28% 28% at 20% 80%, rgba(0,122,255,.07), transparent 60%),
+                 radial-gradient(28% 28% at 85% 25%, rgba(94,92,230,.07), transparent 60%);
+      animation-duration:22s;
+    }
+    @keyframes bgfloat{
+      0%,100%{transform:translateY(-1%) translateX(0)}
+      50%{transform:translateY(2%) translateX(1%)}
     }
 
     .container{max-width:1100px;margin:0 auto;padding:20px}
 
+    /* Навігація */
+    .nav{position:sticky; top:0; z-index:10; backdrop-filter:blur(12px);
+         background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.6));
+         border-bottom:1px solid var(--outline);}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{font-weight:800}
+    .links{display:flex;gap:12px;flex-wrap:wrap}
+    .links a{padding:8px 10px;border-radius:10px}
+    .links a.active{color:var(--accent);font-weight:700}
+
+    /* Хедер */
     header{display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center;margin:40px 0}
     header .photo{border-radius:24px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 8px 20px rgba(0,0,0,.06)}
     header h1{margin:0;font-size:28px;font-weight:800}
@@ -39,261 +60,175 @@
     .btn.secondary{background:var(--card);border:1px solid var(--outline);color:var(--text)}
     .btn.secondary:hover{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 
+    /* Секції */
     section{margin:40px 0;padding:24px;border-radius:20px;background:var(--card);border:1px solid var(--outline);box-shadow:0 4px 14px rgba(0,0,0,.03)}
     h2{margin-top:0;font-size:22px}
     ul{padding-left:20px;margin:0}
     li{margin-bottom:8px}
 
+    /* Таймлайн */
     .timeline{list-style:none;margin:0;padding:0;position:relative}
     .timeline::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2))}
-    .timeline li{position:relative;padding-left:40px;margin-bottom:24px}
+    .timeline li{position:relative;padding-left:40px;margin-bottom:24px;transition:background .4s ease, box-shadow .4s ease, transform .3s ease}
     .timeline li::before{content:"";position:absolute;left:10px;top:6px;width:14px;height:14px;border-radius:50%;background:linear-gradient(var(--accent),var(--accent2));box-shadow:0 0 0 3px #fff}
+    .timeline li.active{background:#fff;border:1px solid var(--outline);border-radius:14px;padding:18px 18px 18px 40px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
 
+    /* Бейджі */
     .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .badge{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--outline);font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .25s ease, box-shadow .25s ease}
-    .badge:hover{transform:translateY(-3px);box-shadow:0 0 12px rgba(0,122,255,.25)}
+    .badge{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--outline);font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .2s ease, box-shadow .25s ease}
+    .badge:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,122,255,.15), 0 0 0 3px rgba(0,122,255,.06)}
 
+    /* Контакти */
     .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
     .contact a{padding:14px;border-radius:14px;background:#fff;border:1px solid var(--outline);display:flex;align-items:center;gap:8px;font-weight:600}
     .contact a:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
 
     footer{text-align:center;margin:40px 0;color:var(--muted)}
 
-    /* Reveal animation */
+    /* Плавний скрол */
+    html{scroll-behavior:smooth; scroll-padding-top: 80px;}
+
+    /* Анімація появи */
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease}
     .reveal.show{opacity:1;transform:none}
 
-    /* Hover glow for badges */
-    .badge{transition:transform .2s ease, box-shadow .25s ease}
-    .badge:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,122,255,.15), 0 0 0 3px rgba(0,122,255,.06)}
-
-    /* Timeline reveal highlight */
-    .timeline li{transition:background .4s ease, box-shadow .4s ease, transform .3s ease}
-    .timeline li.active{background:#fff;border:1px solid var(--outline);border-radius:14px;padding:18px 18px 18px 40px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
-    .timeline li.active::before{box-shadow:0 0 0 6px rgba(0,122,255,.15)}
-    html{scroll-behavior:smooth}
-
-    .links a.active{color:var(--accent);font-weight:700}
+    /* Кнопка наверх */
     #backToTop{position:fixed;bottom:20px;right:20px;padding:12px 16px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 14px rgba(0,0,0,.15);}
     #backToTop:hover{box-shadow:0 6px 20px rgba(0,0,0,.25)}
 
-    /* Lang switch button subtle look */
-    #btnLang{background:#fff;border:1px solid var(--outline)}
-    #btnLang:hover{box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    @media (max-width:860px){
+      header{grid-template-columns:1fr; text-align:center}
+      .cta{justify-content:center}
+    }
   </style>
 </head>
 <body>
+  <!-- Навігація -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">Андрій Яковенко</div>
+      <div class="links">
+        <a href="#about" id="navAbout">Про мене</a>
+        <a href="#exp" id="navExp">Досвід</a>
+        <a href="#skills" id="navSkills">Навички</a>
+        <a href="#contact" id="navContact">Контакти</a>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
+    <!-- Хедер -->
     <header class="reveal">
-      <div class="photo"><img src="assets/photo.jpg" alt="Фото Андрій Яковенко"></div>
+      <div class="photo"><img src="assets/photo.jpg" alt="Фото — Андрій Яковенко"></div>
       <div>
-        <h1 id="name">Андрій Яковенко</h1>
-        <p id="subtitle">Менеджер з розвитку / Регіональний адміністратор</p>
+        <h1>Андрій Яковенко</h1>
+        <p>Менеджер з розвитку / Регіональний адміністратор</p>
         <div class="cta">
-          <a class="btn primary" href="#contact" id="btnContact">Звʼязатися</a>
-          <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.docx" download>Word‑резюме</a>
-        <a class="btn secondary" id="langSwitch" href="#">EN / УКР</a></div>
+          <a class="btn primary" href="#contact">Звʼязатися</a>
+          <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко_укр.docx" download>Завантажити резюме (Word)</a>
+        </div>
       </div>
     </header>
 
+    <!-- Про мене -->
     <section class="reveal" id="about">
-      
-      <h2 id="hAbout">Про мене</h2>
-      <p id="aboutP1">Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку з понад п’ятирічним досвідом у ритейлі.
+      <h2>Про мене</h2>
+      <p>Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку з понад п’ятирічним досвідом у ритейлі.
       Мій шлях охоплює роботу з різними категоріями — від <strong>запчастин та побутової техніки</strong> до <strong>професійних фотокамер</strong> і спеціалізованих нішевих товарів.
-      Останні роки я сфокусований на <strong>вейп-напрямку</strong>, де реалізував масштабні проєкти з розвитку мереж і підвищення прибутковості.</p>
-      <ul id="aboutList">
+      Останні роки я сфокусований на <strong>вейп-напрямку</strong>, де реалізував проєкти з розвитку мереж і підвищення прибутковості.</p>
+      <ul>
         <li>У S.V Group забезпечив <strong>+22% зростання виручки за перший місяць</strong> роботи та підняв маржинальність.</li>
         <li>В UVape керував роботою <strong>10+ торгових точок</strong>, подолав кадровий дефіцит і забезпечив <strong>стале щомісячне зростання KPI</strong>.</li>
         <li>У Vape Station прибуток магазину зріс на <strong>80% за рік</strong> завдяки оптимізації процесів і розвитку команди.</li>
       </ul>
-      <p id="aboutP2"><strong>Сильні сторони:</strong> широка товарна експертиза, управління закупівлями, асортимент, контроль залишків, запуск акцій, SMM і діджитал-просування, AI‑автоматизація та технічна обізнаність.</p>
-
+      <p><strong>Сильні сторони:</strong> широка товарна експертиза, управління закупівлями, асортимент, контроль залишків, запуск акцій, SMM і діджитал‑просування, AI‑автоматизація та технічна обізнаність.</p>
+      <div class="badges">
+        <span class="badge">AI‑інструменти</span>
+        <span class="badge">Асортиментна матриця</span>
+        <span class="badge">Інвентаризації</span>
+        <span class="badge">SMM / промо</span>
+        <span class="badge">Управління мережею</span>
+        <span class="badge">Компʼютерне «залізо»</span>
+      </div>
     </section>
 
+    <!-- Досвід -->
     <section class="reveal" id="exp">
-      <h2 id="hExp">Досвід</h2>
-      <ul class="timeline reveal">
-        <li><div class="job"><strong>S.V Group</strong> — Менеджер з розвитку vape‑напрямку <span class="muted">04.2025 – нині</span></div>
-        <p>+22% зростання виручки у перший місяць, підвищення маржинальності. Виїзди на ТТ, навчання продавців, аудити, звіти й регламенти. Запуск акцій, робота з обладнанням, закупівлі та асортиментна матриця. Створення навчальних матеріалів.</p></li>
-
-        <li><div class="job"><strong>UVape</strong> — Регіональний адміністратор <span class="muted">10.2024 – 04.2025</span></div>
-        <p>Щотижневі замовлення для 10+ магазинів (аналіз залишків та попиту). Інвентаризації, відкриття й переїзди ТТ. Координація підрядників. Подолав кадровий дефіцит і забезпечив <strong>стале місячне зростання KPI</strong> (продажі, виконання планів, сервіс).</p></li>
-
-        <li><div class="job"><strong>Vape Station</strong> — Керуючий магазином <span class="muted">04.2023 – 09.2024</span></div>
-        <p>Організація й стандартизація процесів. Активна участь у SMM (контент, reels, тексти). Виконання й перевиконання планів. +80% прибутку за рік як результат командної роботи.</p></li>
-
-        <li><div class="job"><strong>Moyo</strong> — Продавець → Заступник директора <span class="muted">04.2019 – 03.2020</span></div>
-        <p>Стабільне виконання планів продажів і високий NPS. Успішні перевірки «таємного покупця». Підвищення до заступника директора завдяки результатам і управлінню командою.</p></li>
+      <h2>Досвід</h2>
+      <ul class="timeline">
+        <li class="exp-item">
+          <div class="job"><strong>S.V Group — Менеджер з розвитку vape‑напрямку</strong> <span class="muted">04.2025 – нині</span></div>
+          <p>+22% зростання виручки у перший місяць; підвищення маржинальності. Виїзди на ТТ, навчання продавців, аудити, звіти та регламенти. Запуск акцій, робота з обладнанням, закупівлі та асортиментна матриця. Створення навчальних матеріалів.</p>
+        </li>
+        <li class="exp-item">
+          <div class="job"><strong>UVape — Регіональний адміністратор</strong> <span class="muted">10.2024 – 04.2025</span></div>
+          <p>Щотижневі замовлення для 10+ магазинів (аналіз залишків та попиту). Інвентаризації, відкриття й переїзди ТТ. Координація підрядників. Подолав кадровий дефіцит і забезпечив <strong>стале місячне зростання KPI</strong> (продажі, виконання планів, сервіс).</p>
+        </li>
+        <li class="exp-item">
+          <div class="job"><strong>Vape Station — Керуючий магазином</strong> <span class="muted">04.2023 – 09.2024</span></div>
+          <p>Організація й стандартизація процесів. Активна участь у SMM (контент, reels, тексти). Виконання й перевиконання планів. +80% прибутку за рік як результат командної роботи.</p>
+        </li>
+        <li class="exp-item">
+          <div class="job"><strong>Moyo — Продавець → Заступник директора</strong> <span class="muted">04.2019 – 03.2020</span></div>
+          <p>Стабільне виконання планів продажів і високий NPS. Успішні перевірки «таємного покупця». Підвищення до заступника директора завдяки результатам та управлінню командою.</p>
+        </li>
       </ul>
     </section>
 
+    <!-- Навички -->
     <section class="reveal" id="skills">
-      <h2 id="hSkills">Навички</h2>
+      <h2>Навички</h2>
       <p><strong>Управління мережею:</strong> закупівлі, аналітика, асортимент, стандартизація процесів. <strong>Маркетинг:</strong> акції, промо, SMM, контент. <strong>Digital & AI:</strong> автоматизація задач, створення лендингів і промо‑матеріалів. <strong>Операційка:</strong> інвентаризації, звітність, робота з обладнанням. <strong>Техніка:</strong> впевнений користувач ПК та «заліза».</p>
     </section>
 
+    <!-- Контакти -->
     <section class="reveal" id="contact">
-      <h2 id="hContact">Контакти</h2>
+      <h2>Контакти</h2>
       <div class="contact">
-        <a href="tel:+380993586621"><span id="telLabel">📞</span> +38 (099) 358‑66‑21</a>
-        <a href="mailto:neykrus@gmail.com"><span id="mailLabel">✉️</span> neykrus@gmail.com</a>
-        <a href="https://t.me/Neykrus" target="_blank" rel="noopener">💬 <span id="tgLabel">Telegram</span> @Neykrus</a>
+        <a href="tel:+380993586621">📞 +38 (099) 358‑66‑21</a>
+        <a href="mailto:neykrus@gmail.com">✉️ neykrus@gmail.com</a>
+        <a href="https://t.me/Neykrus" target="_blank" rel="noopener">💬 Telegram @Neykrus</a>
       </div>
     </section>
 
     <footer>© <span id="year"></span> Андрій Яковенко</footer>
   </div>
 
-  <script>
-    // Scroll reveal + timeline highlight
+  <button id="backToTop">↑ Top</button>
 
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Поява секцій
     const io=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show'); io.unobserve(e.target);}});
     }, {threshold:.15});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
+    // Підсвітка таймлайну
     const tl = document.querySelectorAll('.timeline li');
     const tlObs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('active'); }
-        else { e.target.classList.remove('active'); }
-      });
+      entries.forEach(e=>{ e.target.classList.toggle('active', e.isIntersecting); });
     }, {rootMargin:'-10% 0px -70% 0px', threshold:0.01});
     tl.forEach(item=>tlObs.observe(item));
-  
-    // Highlight active nav link
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".links a");
+    // Активний пункт меню
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.links a');
     const navObs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
-          navLinks.forEach(l=>l.classList.remove("active"));
-          const id = e.target.getAttribute("id");
+          navLinks.forEach(l=>l.classList.remove('active'));
+          const id = e.target.getAttribute('id');
           const link = document.querySelector('.links a[href="#'+id+'"]');
-          if(link){link.classList.add("active");}
+          if(link){ link.classList.add('active'); }
         }
       });
-    },{threshold:.4});
+    }, {threshold:.4});
     sections.forEach(s=>navObs.observe(s));
-
-    // Back to top button
-    const backBtn = document.getElementById("backToTop");
-    window.addEventListener("scroll",()=>{
-      if(window.scrollY>300){backBtn.style.display="block";} else{backBtn.style.display="none";}
+    // Кнопка «наверх»
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll',()=>{
+      backBtn.style.display = window.scrollY>300 ? 'block' : 'none';
     });
-    backBtn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:'smooth'});});
-
-  
-    // Language switcher (basic demo)
-    const switcherBtn = document.getElementById("langSwitch");
-    let currentLang = "uk";
-    switcherBtn.addEventListener("click",(e)=>{
-      e.preventDefault();
-      if(currentLang==="uk"){
-        document.documentElement.lang="en";
-        switcherBtn.textContent="UKR / EN";
-        // Here you could swap texts with dataset or external JSON
-        alert("EN version placeholder (content translation can be added)");
-        currentLang="en";
-      }else{
-        document.documentElement.lang="uk";
-        switcherBtn.textContent="EN / УКР";
-        alert("Повернено українську версію (приклад перемикача)");
-        currentLang="uk";
-      }
-    });
-
-
-    // Simple i18n (UA/EN)
-    const i18n = {
-      ua: {
-        navAbout: "Про мене",
-        navExp: "Досвід",
-        navSkills: "Навички",
-        navContact: "Контакти",
-        subtitle: "Менеджер з розвитку / Регіональний адміністратор",
-        btnContact: "Звʼязатися",
-        btnWord: "Word‑резюме",
-        hAbout: "Про мене",
-        aboutP1: "Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку з понад п’ятирічним досвідом у ритейлі. Мій шлях охоплює роботу з різними категоріями — від <strong>запчастин та побутової техніки</strong> до <strong>професійних фотокамер</strong> і спеціалізованих нішевих товарів. Останні роки я сфокусований на <strong>вейп-напрямку</strong>, де реалізував масштабні проєкти з розвитку мереж і підвищення прибутковості.",
-        aboutList: [
-          "У S.V Group забезпечив <strong>+22% зростання виручки за перший місяць</strong> роботи та підняв маржинальність.",
-          "В UVape керував роботою <strong>10+ торгових точок</strong>, подолав кадровий дефіцит і забезпечив <strong>стале щомісячне зростання KPI</strong>.",
-          "У Vape Station прибуток магазину зріс на <strong>80% за рік</strong> завдяки оптимізації процесів і розвитку команди."
-        ],
-        aboutP2: "<strong>Сильні сторони:</strong> широка товарна експертиза, управління закупівлями, асортимент, контроль залишків, запуск акцій, SMM і діджитал-просування, AI‑автоматизація та технічна обізнаність.",
-        hExp: "Досвід",
-        hSkills: "Навички",
-        hContact: "Контакти",
-        tgLabel: "Telegram"
-      },
-      en: {
-        navAbout: "About",
-        navExp: "Experience",
-        navSkills: "Skills",
-        navContact: "Contacts",
-        subtitle: "Business Development Manager / Regional Retail Administrator",
-        btnContact: "Contact",
-        btnWord: "Download CV (Word)",
-        hAbout: "About",
-        aboutP1: "I’m <strong>Andrii Yakovenko</strong>, a business development manager with 5+ years in retail. I’ve worked across categories — from <strong>spare parts and home appliances</strong> to <strong>professional cameras</strong> and niche products. In recent years I’ve focused on the <strong>vape segment</strong>, delivering projects that improved network performance and profitability.",
-        aboutList: [
-          "At S.V Group, delivered <strong>+22% revenue growth in the first month</strong> while improving margins.",
-          "At UVape, managed <strong>10+ stores</strong>, resolved staffing shortages, and achieved <strong>consistent month‑over‑month KPI growth</strong>.",
-          "At Vape Station, profit grew by <strong>80% YoY</strong> thanks to process optimization and team development."
-        ],
-        aboutP2: "<strong>Strengths:</strong> broad product expertise, purchasing and assortment management, stock control, promo & SMM, digital marketing, AI automation, and strong technical skills.",
-        hExp: "Experience",
-        hSkills: "Skills",
-        hContact: "Contacts",
-        tgLabel: "Telegram"
-      }
-    };
-
-    let lang = 'ua';
-    const btnLang = document.getElementById('btnLang');
-
-    function applyLang() {
-      const dict = i18n[lang];
-      const set = (id, html) => { const el = document.getElementById(id); if(el){ el.innerHTML = html; } };
-      set('navAbout', dict.navAbout);
-      set('navExp', dict.navExp);
-      set('navSkills', dict.navSkills);
-      set('navContact', dict.navContact);
-      set('subtitle', dict.subtitle);
-      set('btnContact', dict.btnContact);
-      set('btnWord', dict.btnWord);
-      set('hAbout', dict.hAbout);
-      set('aboutP1', dict.aboutP1);
-      set('aboutP2', dict.aboutP2);
-      set('hExp', dict.hExp);
-      set('hSkills', dict.hSkills);
-      set('hContact', dict.hContact);
-      set('tgLabel', dict.tgLabel);
-
-      // Update About list
-      const ul = document.getElementById('aboutList');
-      if (ul){ ul.innerHTML = dict.aboutList.map(li => `<li>${li}</li>`).join(''); }
-
-      // Button label toggle
-      btnLang.textContent = (lang === 'ua') ? 'EN' : 'UA';
-    }
-
-    btnLang.addEventListener('click', (e)=>{
-      e.preventDefault();
-      lang = (lang === 'ua') ? 'en' : 'ua';
-      applyLang();
-      localStorage.setItem('lang', lang);
-    });
-
-    // Load preferred language
-    const savedLang = localStorage.getItem('lang');
-    if(savedLang && (savedLang in i18n)){ lang = savedLang; }
-    applyLang();
-
+    backBtn.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
   </script>
-<button id="backToTop">↑ Top</button>
 </body>
 </html>
