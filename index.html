@@ -4,20 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Андрій Яковенко — Менеджер з розвитку</title>
-  <meta name="description" content="Сайт‑візитка: менеджер з розвитку / регіональний адміністратор. Досягнення, навички, контакти." />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Сайт‑візитка Андрія Яковенка: менеджер з розвитку / регіональний адміністратор роздрібної мережі." />
+  <meta name="color-scheme" content="light dark" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#070b12; --card:rgba(12,17,27,.72); --muted:#a7b0c4; --text:#eaf2ff; --outline:rgba(255,255,255,.08);
-      --accent:#22d3ee; --accent2:#a78bfa; --ok:#34d399; --warn:#fb923c;
-      --ring:0 0 0 3px rgba(34,211,238,.35);
+      --accent:#22d3ee; --accent2:#a78bfa; --ok:#34d399; --warn:#fb923c; --ring:0 0 0 3px rgba(34,211,238,.35);
     }
-    :root.light{ --bg:#f6f8fc; --card:rgba(255,255,255,.78); --muted:#485268; --text:#0c1626; --outline:rgba(15,23,42,.08); --accent:#0ea5e9; --accent2:#7c3aed; }
+    :root.light{ --bg:#f6f8fc; --card:rgba(255,255,255,.78); --muted:#485268; --text:#0c1626; --outline:rgba(15,23,42,.08);
+      --accent:#0ea5e9; --accent2:#7c3aed;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
+    /* Background */
     .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
     .gradient{position:absolute;inset:-20%;filter:blur(70px);opacity:.75;background:conic-gradient(from 0deg at 50% 50%,
       rgba(124,58,237,.55), rgba(14,165,233,.55), rgba(34,211,238,.55), rgba(167,139,250,.55), rgba(124,58,237,.55));
@@ -33,49 +35,38 @@
     @media (prefers-reduced-motion:reduce){ .gradient,.blob{animation:none} }
 
     .container{max-width:1120px;margin:0 auto;padding:24px}
-
-    .nav{position:sticky;top:0;backdrop-filter:blur(12px);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),
-      color-mix(in oklab, var(--card) 85%, transparent);border-bottom:1px solid var(--outline);z-index:60}
-    .nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 24px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#07101a}
-    .nav .links{display:flex;gap:16px;flex-wrap:wrap}
-    .nav a{color:var(--text);text-decoration:none;opacity:.9;position:relative}
+    .nav{position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),color-mix(in oklab, var(--card) 85%, transparent);
+         backdrop-filter:blur(12px);z-index:60;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-bottom:1px solid var(--outline)}
+    .nav a{color:var(--text);text-decoration:none;margin:0 12px;opacity:.9;position:relative}
+    .nav a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.25s}
     .nav a:hover{opacity:1}
-    .nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s ease}
     .nav a:hover::after{width:100%}
 
-    .hero{display:grid;grid-template-columns:180px 1fr auto;gap:22px;align-items:center;margin:26px 0 10px}
-    @media (max-width:920px){.hero{grid-template-columns:120px 1fr}}
-    .photo{width:180px;height:180px;border-radius:28px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 15px 45px rgba(0,0,0,.35)}
-    .photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
-    .title h1{margin:0 0 6px;font-size:40px;letter-spacing:.2px}
-    .title p{margin:0;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:200px 1fr auto;gap:22px;align-items:center;margin:36px 0}
+    @media (max-width:920px){.hero{grid-template-columns:140px 1fr}}
+    .photo{width:200px;height:200px;border-radius:28px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 15px 45px rgba(0,0,0,.35)}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .title h1{margin:0;font-size:40px}
+    .title p{margin:6px 0 0;color:var(--muted)}
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--outline);padding:8px 10px;border-radius:999px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-self:end}
-    .btn{appearance:none;border:1px solid transparent;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111f;padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-flex;gap:8px;align-items:center;transform:translateY(0);transition:transform .15s ease}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;justify-self:end}
+    .btn{padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s;border:1px solid transparent}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111f}
+    .btn.secondary{border-color:var(--outline);color:var(--text)}
     .btn:hover{transform:translateY(-2px)}
-    .btn.secondary{background:transparent;border-color:var(--outline);color:var(--text)}
     .btn:focus-visible{outline:none;box-shadow:var(--ring)}
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
     .reveal.show{opacity:1;transform:none}
 
-    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
     @media (max-width:1000px){ .grid{grid-template-columns:1fr}}
     .card{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px;backdrop-filter:blur(8px)}
-    .card h2{margin:0 0 12px;font-size:18px}
-    .muted{color:var(--muted)}
-
-    .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
-    @media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}}
-    .kpi{background:linear-gradient(180deg, rgba(255,255,255,.05), transparent), var(--card);border:1px solid var(--outline);border-radius:14px;padding:12px}
-    .kpi .num{font-size:24px;font-weight:800}
-    .kpi.ok .num{color:var(--ok)}
-    .kpi.warn .num{color:var(--warn)}
+    .card h2{margin:0 0 12px}
 
     .timeline{position:relative;margin:0;padding:0;list-style:none}
-    .timeline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));opacity:.5}
+    .timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));opacity:.5}
     .timeline li{position:relative;margin:0 0 16px 0;padding-left:36px}
     .dot{position:absolute;left:7px;top:.35em;width:14px;height:14px;border-radius:50%;background:linear-gradient(var(--accent),var(--accent2));box-shadow:0 0 0 3px rgba(0,0,0,.25)}
     .job{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
@@ -86,19 +77,14 @@
     .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
     .contact a{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--outline);padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--text)}
     .contact a:hover{border-color:rgba(255,255,255,.22)}
-    .qr{margin-top:12px;text-align:center}
-    .qr img{width:140px;height:140px}
 
     footer{margin:26px 0;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
     .toggle{background:transparent;border:1px solid var(--outline);border-radius:999px;color:var(--text);padding:8px 12px;cursor:pointer}
     code.kbd{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px;border:1px solid var(--outline)}
-
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    a.skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    a.skip:focus{left:12px;top:12px;width:auto;height:auto;background:var(--card);border:1px solid var(--outline);padding:8px 10px;border-radius:10px}
   </style>
 </head>
 <body>
+  <!-- Animated Background Layer -->
   <div class="bg" aria-hidden="true">
     <div class="gradient"></div>
     <div class="blob b1" style="left:-12%;top:-8%"></div>
@@ -106,19 +92,15 @@
     <div class="blob b3"></div>
   </div>
 
-  <a class="skip" href="#main">Пропустити до основного контенту</a>
   <nav class="nav" aria-label="Головна навігація">
-    <div class="nav-inner">
-      <div class="brand"><div class="logo">АЯ</div> <span>Андрій Яковенко</span></div>
-      <div class="links">
-        <a href="#about">Профіль</a>
-        <a href="#skills">Навички</a>
-        <a href="#exp">Досвід</a>
-        <a href="#contact">Контакти</a>
-        <a href="#more">Більше про мене</a>
-      </div>
-      <button class="toggle" id="modeToggle" type="button" aria-label="Перемикач теми">🌓</button>
+    <div class="brand" style="font-weight:800">Андрій Яковенко</div>
+    <div class="links">
+      <a href="#about">Профіль</a>
+      <a href="#skills">Навички</a>
+      <a href="#exp">Досвід</a>
+      <a href="#contact">Контакти</a>
     </div>
+    <button class="toggle" id="modeToggle" type="button" aria-label="Перемикач теми">🌓</button>
   </nav>
 
   <div class="container" id="top">
@@ -135,50 +117,34 @@
           <span class="badge">AI‑інструменти</span>
           <span class="badge">1С</span>
         </div>
-        <div class="kpis" aria-label="Ключові досягнення">
-          <div class="kpi ok"><div class="num">+22%</div><div class="muted">Зростання виручки (S.V Group, 1‑й місяць)</div></div>
-          <div class="kpi"><div class="num">+80%</div><div class="muted">Зростання прибутку (Vape Station, 1 рік)</div></div>
-          <div class="kpi warn"><div class="num">5+ років</div><div class="muted">Досвід у ритейлі</div></div>
-        </div>
       </div>
       <div class="actions reveal" style="transition-delay:.1s">
-        <a class="btn" href="#contact" title="Звʼязатися">Контакти</a>
-        <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.pdf" download>Завантажити CV</a>
+        <a class="btn primary" href="#contact" title="Звʼязатися">Контакти</a>
+        <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.docx" download>Word‑резюме</a>
       </div>
     </header>
 
     <main class="grid" id="main">
       <section class="card reveal" id="about">
         <h2>Про мене</h2>
-        <p class="muted">
-          Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку та адміністратор роздрібної мережі.
-          Уже понад 5 років працюю з ритейлом — від роботи в залі до запуску нових напрямків.
-          Моя спеціалізація — <strong>виводити магазини на новий рівень прибутковості</strong> завдяки системі: аналітика, маркетинг та навчальні матеріали для команди.
-        </p>
+        <p class="muted">Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку та адміністратор роздрібної мережі. Уже понад 5 років працюю з ритейлом — від операцій у залі до запуску напрямків продажів. Моє завдання — <em>системно піднімати прибутковість</em>: поєдную аналітику, маркетинг і розвиток команди, щоб магазини стабільно зростали.</p>
       </section>
 
       <section class="card reveal" id="skills" style="transition-delay:.05s">
-        <h2>Чим буду корисний</h2>
-        <div class="muted" style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="badge">Системні процеси: закупівлі, облік, інвентаризації</span>
-          <span class="badge">Підвищення маржі без втрати лояльності</span>
-          <span class="badge">Маркетинг: акції, промо, SMM</span>
-          <span class="badge">AI та автаматизація рутини</span>
-          <span class="badge">Лендинги та промо‑матеріали</span>
-          <span class="badge">Впевнений користувач ПК / «заліза»</span>
-        </div>
+        <h2>Що я вмію</h2>
+        <p class="muted">Будую процеси закупівель і планування, підвищую маржу без втрати лояльності, запускаю акції та промо, використовую AI для автоматизації рутини та створення лендингів/матеріалів. Впевнений користувач ПК і комп’ютерного заліза.</p>
       </section>
 
       <section class="card reveal" id="exp" style="grid-column:1/-1;transition-delay:.1s">
-        <h2>Досвід</h2>
+        <h2>Досягнення</h2>
         <ul class="timeline">
           <li>
             <span class="dot" aria-hidden="true"></span>
             <div class="job">
-              <div class="where">Менеджер з розвитку vape‑напрямку — S.V Group, Запоріжжя</div>
+              <div class="where">Менеджер з розвитку — S.V Group, Запоріжжя</div>
               <div class="when">04.2025 – нині</div>
             </div>
-            <p>Досяг <strong>+22% зростання виручки</strong> вже в перший місяць і паралельно підвищив маржинальність. Виїзди на ТТ, навчальні матеріали, аудити, звіти та регламенти, маркетингові акції, закупівлі та асортиментна матриця.</p>
+            <p><strong>+22% зростання виручки в перший місяць</strong> із одночасним підвищенням маржі. Виїзди на ТТ, аудит, звіти та регламенти. Запуск акцій. Закупівлі й асортиментна матриця. Створення навчальних матеріалів.</p>
           </li>
           <li>
             <span class="dot" aria-hidden="true"></span>
@@ -186,23 +152,15 @@
               <div class="where">Регіональний адміністратор — UVape, Полтава</div>
               <div class="when">10.2024 – 04.2025</div>
             </div>
-            <p>Контроль залишків і щотижневі замовлення, інвентаризації, відкриття/переїзди ТТ. Підрядники: ремонти, логістика, реклама. Кадрові процеси. Щомісячне виконання планів продажів, закриття кадрового дефіциту.</p>
+            <p>Контроль залишків, щотижневі замовлення, інвентаризації, відкриття/переїзди ТТ. Підрядники (ремонти, логістика, реклама). Кадрові процеси. Щомісячне виконання планів продажів.</p>
           </li>
           <li>
             <span class="dot" aria-hidden="true"></span>
             <div class="job">
-              <div class="where">Керуючий магазином — Vape Station, Полтава</div>
+              <div class="where">Керуючий — Vape Station, Полтава</div>
               <div class="when">04.2023 – 09.2024</div>
             </div>
-            <p>Організація бізнес‑процесів, стандартизація торгівлі, навчання команди. <strong>+80% до прибутку</strong> за рік. Координація персоналу та SMM, контент (reels), тексти для соцмереж.</p>
-          </li>
-          <li>
-            <span class="dot" aria-hidden="true"></span>
-            <div class="job">
-              <div class="where">Продавець‑консультант → Заступник директора — Moyo, Полтава</div>
-              <div class="when">04.2019 – 03.2020</div>
-            </div>
-            <p>Найвищі продажі серед колег, успішні перевірки «таємного покупця», підвищення до заступника директора за 11 місяців.</p>
+            <p><strong>+80% прибутку за рік</strong> завдяки стандартизації процесів і розвитку маркетингу (SMM, контент, промо).</p>
           </li>
         </ul>
       </section>
@@ -210,24 +168,13 @@
       <section class="card reveal" id="contact" style="transition-delay:.15s">
         <h2>Контакти</h2>
         <div class="contact">
-          <a href="tel:+380993586621" title="Подзвонити"><span class="sr-only">Телефон:</span> +38 (099) 358‑66‑21</a>
-          <a href="mailto:neykrus@gmail.com" title="Написати лист"><span class="sr-only">Email:</span> neykrus@gmail.com</a>
-          <a href="https://t.me/your_username" target="_blank" rel="noopener" title="Telegram">Telegram</a>
-          <a href="assets/Резюме_Андрій_Яковенко.pdf" download title="Скачати резюме PDF">PDF‑резюме</a>
+          <a href="tel:+380993586621" title="Подзвонити">📞 +38 (099) 358‑66‑21</a>
+          <a href="mailto:neykrus@gmail.com" title="Написати лист">✉️ neykrus@gmail.com</a>
+          <a href="https://t.me/NEYKRUS" target="_blank" rel="noopener" title="Telegram">💬 Telegram</a>
         </div>
-        <div class="qr">
-          <p class="muted">Швидкий перехід у Telegram</p>
-          <img src="assets/telegram-qr.png" alt="QR‑код Telegram">
+        <div style="text-align:center;margin-top:10px">
+          <img src="assets/telegram-qr.png" alt="QR‑код Telegram @NEYKRUS" width="160" height="160">
         </div>
-      </section>
-
-      <section class="card reveal" id="more" style="transition-delay:.20s">
-        <h2>Більше про мене</h2>
-        <p class="muted">
-          Люблю виклики та процеси, які працюють без мікроменеджменту. Фокус — на прозорих метриках, швидких ітераціях і команді, що зростає разом з бізнесом.
-          Готовий до релокації для особистого та професійного розвитку. Якщо коротко — зроблю так, щоб <em>було системно, прибутково та по‑людськи</em>.
-        </p>
-        <p><a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.pdf" download>Скачати повне резюме (PDF)</a></p>
       </section>
     </main>
 
@@ -238,12 +185,14 @@
   </div>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Theme toggle
     const root = document.documentElement; const apply = (m)=>root.classList.toggle('light', m==='light');
     const saved = localStorage.getItem('mode'); if(saved){ apply(saved); }
     document.getElementById('modeToggle').addEventListener('click', ()=>{ const next = root.classList.contains('light')?'dark':'light'; apply(next); localStorage.setItem('mode', next); });
     document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='t'){ document.getElementById('modeToggle').click(); }});
-
+    // Reveal on scroll
     const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold:.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
