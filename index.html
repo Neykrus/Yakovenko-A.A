@@ -4,25 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Андрій Яковенко — Менеджер з розвитку</title>
-  <meta name="description" content="Сайт‑візитка Андрія Яковенка: менеджер з розвитку / регіональний адміністратор роздрібної мережі. Досвід, досягнення, навички, контакти." />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Сайт‑візитка: менеджер з розвитку / регіональний адміністратор. Досягнення, навички, контакти." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&text=АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя0123456789%20—–,.()%2F:+%25" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#070b12; --card:rgba(12,17,27,.72); --muted:#a7b0c4; --text:#eaf2ff; --outline:rgba(255,255,255,.08);
       --accent:#22d3ee; --accent2:#a78bfa; --ok:#34d399; --warn:#fb923c;
       --ring:0 0 0 3px rgba(34,211,238,.35);
     }
-    :root.light{
-      --bg:#f6f8fc; --card:rgba(255,255,255,.78); --muted:#485268; --text:#0c1626; --outline:rgba(15,23,42,.08);
-      --accent:#0ea5e9; --accent2:#7c3aed;
-    }
+    :root.light{ --bg:#f6f8fc; --card:rgba(255,255,255,.78); --muted:#485268; --text:#0c1626; --outline:rgba(15,23,42,.08); --accent:#0ea5e9; --accent2:#7c3aed; }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
-
-    /* === DYNAMIC BACKGROUND === */
     .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
     .gradient{position:absolute;inset:-20%;filter:blur(70px);opacity:.75;background:conic-gradient(from 0deg at 50% 50%,
       rgba(124,58,237,.55), rgba(14,165,233,.55), rgba(34,211,238,.55), rgba(167,139,250,.55), rgba(124,58,237,.55));
@@ -39,7 +34,6 @@
 
     .container{max-width:1120px;margin:0 auto;padding:24px}
 
-    /* === REWORKED HEADER (HERO/NAV) === */
     .nav{position:sticky;top:0;backdrop-filter:blur(12px);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),
       color-mix(in oklab, var(--card) 85%, transparent);border-bottom:1px solid var(--outline);z-index:60}
     .nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 24px}
@@ -52,7 +46,7 @@
     .nav a:hover::after{width:100%}
 
     .hero{display:grid;grid-template-columns:180px 1fr auto;gap:22px;align-items:center;margin:26px 0 10px}
-    @media (max-width:920px){.hero{grid-template-columns:120px 1fr}} 
+    @media (max-width:920px){.hero{grid-template-columns:120px 1fr}}
     .photo{width:180px;height:180px;border-radius:28px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 15px 45px rgba(0,0,0,.35)}
     .photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
     .title h1{margin:0 0 6px;font-size:40px;letter-spacing:.2px}
@@ -64,19 +58,15 @@
     .btn:hover{transform:translateY(-2px)}
     .btn.secondary{background:transparent;border-color:var(--outline);color:var(--text)}
     .btn:focus-visible{outline:none;box-shadow:var(--ring)}
-
-    /* Reveal animations */
     .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
     .reveal.show{opacity:1;transform:none}
 
-    /* LAYOUT */
     .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}
     @media (max-width:1000px){ .grid{grid-template-columns:1fr}}
     .card{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px;backdrop-filter:blur(8px)}
     .card h2{margin:0 0 12px;font-size:18px}
     .muted{color:var(--muted)}
 
-    /* KPI */
     .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
     @media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}}
     .kpi{background:linear-gradient(180deg, rgba(255,255,255,.05), transparent), var(--card);border:1px solid var(--outline);border-radius:14px;padding:12px}
@@ -84,7 +74,6 @@
     .kpi.ok .num{color:var(--ok)}
     .kpi.warn .num{color:var(--warn)}
 
-    /* TIMELINE */
     .timeline{position:relative;margin:0;padding:0;list-style:none}
     .timeline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));opacity:.5}
     .timeline li{position:relative;margin:0 0 16px 0;padding-left:36px}
@@ -97,6 +86,8 @@
     .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
     .contact a{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--outline);padding:12px 14px;border-radius:12px;text-decoration:none;color:var(--text)}
     .contact a:hover{border-color:rgba(255,255,255,.22)}
+    .qr{margin-top:12px;text-align:center}
+    .qr img{width:140px;height:140px}
 
     footer{margin:26px 0;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
     .toggle{background:transparent;border:1px solid var(--outline);border-radius:999px;color:var(--text);padding:8px 12px;cursor:pointer}
@@ -108,7 +99,6 @@
   </style>
 </head>
 <body>
-  <!-- Animated Background Layer -->
   <div class="bg" aria-hidden="true">
     <div class="gradient"></div>
     <div class="blob b1" style="left:-12%;top:-8%"></div>
@@ -125,16 +115,15 @@
         <a href="#skills">Навички</a>
         <a href="#exp">Досвід</a>
         <a href="#contact">Контакти</a>
+        <a href="#more">Більше про мене</a>
       </div>
       <button class="toggle" id="modeToggle" type="button" aria-label="Перемикач теми">🌓</button>
     </div>
   </nav>
 
   <div class="container" id="top">
-    <!-- HERO -->
     <header class="hero" role="banner">
       <div class="photo reveal" aria-hidden="true">
-        <!-- ⚠️ ЗАМІНІТЬ ШЛЯХ НИЖЧЕ НА СВОЄ ФОТО (наприклад: assets/photo.jpg) -->
         <img src="assets/photo.jpg" alt="Фото — Андрій Яковенко" />
       </div>
       <div class="title reveal" style="transition-delay:.05s">
@@ -147,38 +136,36 @@
           <span class="badge">1С</span>
         </div>
         <div class="kpis" aria-label="Ключові досягнення">
-          <div class="kpi ok"><div class="num">+22%</div><div class="muted">Зростання валу (1‑й місяць S.V Group)</div></div>
+          <div class="kpi ok"><div class="num">+22%</div><div class="muted">Зростання виручки (S.V Group, 1‑й місяць)</div></div>
           <div class="kpi"><div class="num">+80%</div><div class="muted">Зростання прибутку (Vape Station, 1 рік)</div></div>
           <div class="kpi warn"><div class="num">5+ років</div><div class="muted">Досвід у ритейлі</div></div>
         </div>
       </div>
       <div class="actions reveal" style="transition-delay:.1s">
-        <a class="btn" href="#contact" title="Звʼязатися">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.88 19.88 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.88 19.88 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z" fill="#08111f"/></svg>
-          Контакти
-        </a>
+        <a class="btn" href="#contact" title="Звʼязатися">Контакти</a>
         <a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.pdf" download>Завантажити CV</a>
       </div>
     </header>
 
     <main class="grid" id="main">
       <section class="card reveal" id="about">
-        <h2>Профіль</h2>
-        <p class="muted">Маю 5+ років досвіду у роздрібній торгівлі та управлінні магазинами. Підвищую продажі, формую асортиментні матриці, запускаю маркетингові кампанії та створюю навчальні матеріали для персоналу. Активно використовую AI для оптимізації рутини, створення лендингів і промо‑матеріалів. Готовий до релокації для професійного зростання.</p>
+        <h2>Про мене</h2>
+        <p class="muted">
+          Я — <strong>Андрій Яковенко</strong>, менеджер із розвитку та адміністратор роздрібної мережі.
+          Уже понад 5 років працюю з ритейлом — від роботи в залі до запуску нових напрямків.
+          Моя спеціалізація — <strong>виводити магазини на новий рівень прибутковості</strong> завдяки системі: аналітика, маркетинг та навчальні матеріали для команди.
+        </p>
       </section>
 
       <section class="card reveal" id="skills" style="transition-delay:.05s">
-        <h2>Навички</h2>
+        <h2>Чим буду корисний</h2>
         <div class="muted" style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="badge">Розвиток мережі</span>
-          <span class="badge">Асортиментна матриця</span>
-          <span class="badge">Планування та закупівлі</span>
-          <span class="badge">Підвищення маржі</span>
-          <span class="badge">Інвентаризації</span>
-          <span class="badge">Мерчандайзинг</span>
-          <span class="badge">SMM / промо</span>
-          <span class="badge">AI / автоматизація</span>
-          <span class="badge">Впевнений користувач ПК</span>
+          <span class="badge">Системні процеси: закупівлі, облік, інвентаризації</span>
+          <span class="badge">Підвищення маржі без втрати лояльності</span>
+          <span class="badge">Маркетинг: акції, промо, SMM</span>
+          <span class="badge">AI та автаматизація рутини</span>
+          <span class="badge">Лендинги та промо‑матеріали</span>
+          <span class="badge">Впевнений користувач ПК / «заліза»</span>
         </div>
       </section>
 
@@ -191,7 +178,7 @@
               <div class="where">Менеджер з розвитку vape‑напрямку — S.V Group, Запоріжжя</div>
               <div class="when">04.2025 – нині</div>
             </div>
-            <p>+22% до валу вже у перший місяць і одночасне підвищення маржинальності. Виїзди на ТТ, навчання продавців, аудити, звіти та регламенти. Запуск маркетингових акцій. Робота з торговим обладнанням. Закупівлі та створення асортиментної матриці. Розробка навчальних матеріалів.</p>
+            <p>Досяг <strong>+22% зростання виручки</strong> вже в перший місяць і паралельно підвищив маржинальність. Виїзди на ТТ, навчальні матеріали, аудити, звіти та регламенти, маркетингові акції, закупівлі та асортиментна матриця.</p>
           </li>
           <li>
             <span class="dot" aria-hidden="true"></span>
@@ -199,7 +186,7 @@
               <div class="where">Регіональний адміністратор — UVape, Полтава</div>
               <div class="when">10.2024 – 04.2025</div>
             </div>
-            <p>Контроль залишків і щотижневі замовлення. Інвентаризації, відкриття/переїзди ТТ. Підрядники: ремонти, логістика, реклама. Кадрові процеси. Щомісячне виконання планів продажів, закриття кадрового дефіциту.</p>
+            <p>Контроль залишків і щотижневі замовлення, інвентаризації, відкриття/переїзди ТТ. Підрядники: ремонти, логістика, реклама. Кадрові процеси. Щомісячне виконання планів продажів, закриття кадрового дефіциту.</p>
           </li>
           <li>
             <span class="dot" aria-hidden="true"></span>
@@ -207,7 +194,7 @@
               <div class="where">Керуючий магазином — Vape Station, Полтава</div>
               <div class="when">04.2023 – 09.2024</div>
             </div>
-            <p>Організація бізнес‑процесів, стандартизація торгівлі, навчання команди. +80% до прибутку за рік. Координація персоналу та SMM, контент (reels), тексти для соцмереж.</p>
+            <p>Організація бізнес‑процесів, стандартизація торгівлі, навчання команди. <strong>+80% до прибутку</strong> за рік. Координація персоналу та SMM, контент (reels), тексти для соцмереж.</p>
           </li>
           <li>
             <span class="dot" aria-hidden="true"></span>
@@ -220,20 +207,27 @@
         </ul>
       </section>
 
-      <section class="card reveal" id="edu" style="transition-delay:.15s">
-        <h2>Освіта</h2>
-        <p><strong>ПолтНТУ ім. Ю. Кондратюка</strong> — Фінанси, банківська справа та страхування (2018–2020)</p>
-        <p><strong>Коледж управління економіки та права ПДАА</strong> — Оціночна діяльність (2015–2018)</p>
-      </section>
-
-      <section class="card reveal" id="contact" style="transition-delay:.2s">
+      <section class="card reveal" id="contact" style="transition-delay:.15s">
         <h2>Контакти</h2>
         <div class="contact">
           <a href="tel:+380993586621" title="Подзвонити"><span class="sr-only">Телефон:</span> +38 (099) 358‑66‑21</a>
           <a href="mailto:neykrus@gmail.com" title="Написати лист"><span class="sr-only">Email:</span> neykrus@gmail.com</a>
-          <a href="https://t.me/" target="_blank" rel="noopener" title="Telegram">Telegram</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">LinkedIn</a>
+          <a href="https://t.me/your_username" target="_blank" rel="noopener" title="Telegram">Telegram</a>
+          <a href="assets/Резюме_Андрій_Яковенко.pdf" download title="Скачати резюме PDF">PDF‑резюме</a>
         </div>
+        <div class="qr">
+          <p class="muted">Швидкий перехід у Telegram</p>
+          <img src="assets/telegram-qr.png" alt="QR‑код Telegram">
+        </div>
+      </section>
+
+      <section class="card reveal" id="more" style="transition-delay:.20s">
+        <h2>Більше про мене</h2>
+        <p class="muted">
+          Люблю виклики та процеси, які працюють без мікроменеджменту. Фокус — на прозорих метриках, швидких ітераціях і команді, що зростає разом з бізнесом.
+          Готовий до релокації для особистого та професійного розвитку. Якщо коротко — зроблю так, щоб <em>було системно, прибутково та по‑людськи</em>.
+        </p>
+        <p><a class="btn secondary" href="assets/Резюме_Андрій_Яковенко.pdf" download>Скачати повне резюме (PDF)</a></p>
       </section>
     </main>
 
@@ -244,34 +238,14 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Theme toggle
     const root = document.documentElement; const apply = (m)=>root.classList.toggle('light', m==='light');
     const saved = localStorage.getItem('mode'); if(saved){ apply(saved); }
     document.getElementById('modeToggle').addEventListener('click', ()=>{ const next = root.classList.contains('light')?'dark':'light'; apply(next); localStorage.setItem('mode', next); });
     document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='t'){ document.getElementById('modeToggle').click(); }});
 
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
-    }, { threshold:.12 });
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold:.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
-
-  <!-- SEO: структуровані дані -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Андрій Яковенко",
-    "jobTitle": "Менеджер з розвитку / Регіональний адміністратор",
-    "address": {"@type":"PostalAddress","addressLocality":"Запоріжжя","addressCountry":"UA"},
-    "email": "mailto:neykrus@gmail.com",
-    "telephone": "+380993586621",
-    "url": "https://example.com",
-    "sameAs": ["https://t.me/", "https://www.linkedin.com/"]
-  }
   </script>
 </body>
 </html>
