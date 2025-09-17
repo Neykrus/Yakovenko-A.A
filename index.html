@@ -10,59 +10,85 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&text=АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯабвгґдеєжзиіїйклмнопрстуфхцчшщьюя0123456789%20—–,.()%2F:+%25" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0f16; --card:#0f1423; --muted:#a7b0c4; --text:#eaf2ff; --outline:rgba(255,255,255,.06);
-      --accent:#22d3ee; --accent2:#a78bfa; --ok:#34d399; --warn:#fb923c; --danger:#f87171;
+      --bg:#070b12; --card:rgba(12,17,27,.72); --muted:#a7b0c4; --text:#eaf2ff; --outline:rgba(255,255,255,.08);
+      --accent:#22d3ee; --accent2:#a78bfa; --ok:#34d399; --warn:#fb923c;
       --ring:0 0 0 3px rgba(34,211,238,.35);
     }
-    :root.light{ --bg:#f7f9fc; --card:#ffffff; --muted:#4b5568; --text:#0c1626; --outline:rgba(15,23,42,.08); --accent:#0ea5e9; --accent2:#7c3aed; }
+    :root.light{
+      --bg:#f6f8fc; --card:rgba(255,255,255,.78); --muted:#485268; --text:#0c1626; --outline:rgba(15,23,42,.08);
+      --accent:#0ea5e9; --accent2:#7c3aed;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:
-      radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.22), transparent 60%),
-      radial-gradient(900px 500px at 100% 0, rgba(14,165,233,.20), transparent 60%), var(--bg);color:var(--text)}
-    .container{max-width:1040px;margin:0 auto;padding:24px}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
 
-    /* NAV */
-    .nav{position:sticky;top:0;backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),
-      color-mix(in oklab, var(--card) 75%, transparent);border-bottom:1px solid var(--outline);z-index:50}
-    .nav-inner{max-width:1040px;margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 24px}
-    .nav a{color:var(--text);text-decoration:none;opacity:.9}
+    /* === DYNAMIC BACKGROUND === */
+    .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+    .gradient{position:absolute;inset:-20%;filter:blur(70px);opacity:.75;background:conic-gradient(from 0deg at 50% 50%,
+      rgba(124,58,237,.55), rgba(14,165,233,.55), rgba(34,211,238,.55), rgba(167,139,250,.55), rgba(124,58,237,.55));
+      animation:spin 18s linear infinite}
+    .blob{position:absolute;width:46vw;height:46vw;max-width:900px;max-height:900px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, rgba(34,211,238,.65), transparent 60%),
+                 radial-gradient(circle at 70% 70%, rgba(167,139,250,.55), transparent 60%);
+      filter:blur(35px);mix-blend:screen;opacity:.55;animation:float 16s ease-in-out infinite}
+    .blob.b2{width:50vw;height:50vw;left:60%;top:-10%;animation-duration:22s}
+    .blob.b3{width:40vw;height:40vw;left:-10%;top:60%;animation-duration:20s}
+    @keyframes spin{to{transform:rotate(1turn)}}
+    @keyframes float{0%,100%{transform:translateY(-2%) translateX(0)}50%{transform:translateY(3%) translateX(1.5%)}}
+    @media (prefers-reduced-motion:reduce){ .gradient,.blob{animation:none} }
+
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+
+    /* === REWORKED HEADER (HERO/NAV) === */
+    .nav{position:sticky;top:0;backdrop-filter:blur(12px);background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),
+      color-mix(in oklab, var(--card) 85%, transparent);border-bottom:1px solid var(--outline);z-index:60}
+    .nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#07101a}
+    .nav .links{display:flex;gap:16px;flex-wrap:wrap}
+    .nav a{color:var(--text);text-decoration:none;opacity:.9;position:relative}
     .nav a:hover{opacity:1}
-    .nav .links{display:flex;gap:14px;flex-wrap:wrap}
+    .nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s ease}
+    .nav a:hover::after{width:100%}
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:120px 1fr auto;gap:18px;align-items:center;margin:24px 0 10px}
-    @media (max-width:860px){.hero{grid-template-columns:88px 1fr}}
-    .photo{width:120px;height:120px;border-radius:24px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .title h1{margin:0 0 4px;font-size:32px;letter-spacing:.2px}
+    .hero{display:grid;grid-template-columns:180px 1fr auto;gap:22px;align-items:center;margin:26px 0 10px}
+    @media (max-width:920px){.hero{grid-template-columns:120px 1fr}} 
+    .photo{width:180px;height:180px;border-radius:28px;overflow:hidden;border:1px solid var(--outline);box-shadow:0 15px 45px rgba(0,0,0,.35)}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03)}
+    .title h1{margin:0 0 6px;font-size:40px;letter-spacing:.2px}
     .title p{margin:0;color:var(--muted)}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--outline);padding:8px 10px;border-radius:999px}
     .actions{display:flex;gap:10px;flex-wrap:wrap;justify-self:end}
-    .btn{appearance:none;border:1px solid transparent;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111f;padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+    .btn{appearance:none;border:1px solid transparent;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08111f;padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-flex;gap:8px;align-items:center;transform:translateY(0);transition:transform .15s ease}
+    .btn:hover{transform:translateY(-2px)}
     .btn.secondary{background:transparent;border-color:var(--outline);color:var(--text)}
     .btn:focus-visible{outline:none;box-shadow:var(--ring)}
 
+    /* Reveal animations */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
     /* LAYOUT */
-    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
-    @media (max-width:980px){ .grid{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01) 30%), var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:18px}
+    @media (max-width:1000px){ .grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--outline);border-radius:16px;padding:18px;backdrop-filter:blur(8px)}
     .card h2{margin:0 0 12px;font-size:18px}
     .muted{color:var(--muted)}
-    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--outline);padding:8px 10px;border-radius:999px;margin:6px 6px 0 0}
 
-    /* KPI CARDS */
-    .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+    /* KPI */
+    .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
     @media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}}
-    .kpi{background:linear-gradient(180deg, rgba(255,255,255,.04), transparent), var(--card);border:1px solid var(--outline);border-radius:14px;padding:12px}
-    .kpi .num{font-size:22px;font-weight:800}
+    .kpi{background:linear-gradient(180deg, rgba(255,255,255,.05), transparent), var(--card);border:1px solid var(--outline);border-radius:14px;padding:12px}
+    .kpi .num{font-size:24px;font-weight:800}
     .kpi.ok .num{color:var(--ok)}
     .kpi.warn .num{color:var(--warn)}
 
     /* TIMELINE */
     .timeline{position:relative;margin:0;padding:0;list-style:none}
-    .timeline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));opacity:.4}
+    .timeline::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));opacity:.5}
     .timeline li{position:relative;margin:0 0 16px 0;padding-left:36px}
-    .dot{position:absolute;left:7px;top:.3em;width:14px;height:14px;border-radius:50%;background:linear-gradient(var(--accent),var(--accent2));box-shadow:0 0 0 3px rgba(0,0,0,.25)}
+    .dot{position:absolute;left:7px;top:.35em;width:14px;height:14px;border-radius:50%;background:linear-gradient(var(--accent),var(--accent2));box-shadow:0 0 0 3px rgba(0,0,0,.25)}
     .job{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     .job .where{font-weight:700}
     .job .when{color:var(--muted)}
@@ -76,17 +102,24 @@
     .toggle{background:transparent;border:1px solid var(--outline);border-radius:999px;color:var(--text);padding:8px 12px;cursor:pointer}
     code.kbd{background:rgba(255,255,255,.08);padding:2px 6px;border-radius:6px;border:1px solid var(--outline)}
 
-    /* SMALL UX DETAILS */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     a.skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
     a.skip:focus{left:12px;top:12px;width:auto;height:auto;background:var(--card);border:1px solid var(--outline);padding:8px 10px;border-radius:10px}
   </style>
 </head>
 <body>
+  <!-- Animated Background Layer -->
+  <div class="bg" aria-hidden="true">
+    <div class="gradient"></div>
+    <div class="blob b1" style="left:-12%;top:-8%"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
   <a class="skip" href="#main">Пропустити до основного контенту</a>
   <nav class="nav" aria-label="Головна навігація">
     <div class="nav-inner">
-      <a href="#top" style="font-weight:800">AY</a>
+      <div class="brand"><div class="logo">АЯ</div> <span>Андрій Яковенко</span></div>
       <div class="links">
         <a href="#about">Профіль</a>
         <a href="#skills">Навички</a>
@@ -100,20 +133,26 @@
   <div class="container" id="top">
     <!-- HERO -->
     <header class="hero" role="banner">
-      <div class="photo" aria-hidden="true">
+      <div class="photo reveal" aria-hidden="true">
         <!-- ⚠️ ЗАМІНІТЬ ШЛЯХ НИЖЧЕ НА СВОЄ ФОТО (наприклад: assets/photo.jpg) -->
         <img src="assets/photo.jpg" alt="Фото — Андрій Яковенко" />
       </div>
-      <div class="title">
+      <div class="title reveal" style="transition-delay:.05s">
         <h1>Андрій Яковенко</h1>
         <p>Менеджер з розвитку / Регіональний адміністратор роздрібної мережі</p>
+        <div class="badges" aria-label="Мітки">
+          <span class="badge">Запоріжжя</span>
+          <span class="badge">Готовий до релокації</span>
+          <span class="badge">AI‑інструменти</span>
+          <span class="badge">1С</span>
+        </div>
         <div class="kpis" aria-label="Ключові досягнення">
           <div class="kpi ok"><div class="num">+22%</div><div class="muted">Зростання валу (1‑й місяць S.V Group)</div></div>
           <div class="kpi"><div class="num">+80%</div><div class="muted">Зростання прибутку (Vape Station, 1 рік)</div></div>
           <div class="kpi warn"><div class="num">5+ років</div><div class="muted">Досвід у ритейлі</div></div>
         </div>
       </div>
-      <div class="actions">
+      <div class="actions reveal" style="transition-delay:.1s">
         <a class="btn" href="#contact" title="Звʼязатися">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.88 19.88 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.88 19.88 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.12a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z" fill="#08111f"/></svg>
           Контакти
@@ -123,19 +162,12 @@
     </header>
 
     <main class="grid" id="main">
-      <section class="card" aria-labelledby="about" id="about">
+      <section class="card reveal" id="about">
         <h2>Профіль</h2>
         <p class="muted">Маю 5+ років досвіду у роздрібній торгівлі та управлінні магазинами. Підвищую продажі, формую асортиментні матриці, запускаю маркетингові кампанії та створюю навчальні матеріали для персоналу. Активно використовую AI для оптимізації рутини, створення лендингів і промо‑матеріалів. Готовий до релокації для професійного зростання.</p>
-        <div class="muted" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-          <span class="badge">Запоріжжя</span>
-          <span class="badge">Готовий до релокації</span>
-          <span class="badge">AI‑інструменти</span>
-          <span class="badge">1С</span>
-          <span class="badge">Компʼютерне залізо</span>
-        </div>
       </section>
 
-      <section class="card" aria-labelledby="skills" id="skills">
+      <section class="card reveal" id="skills" style="transition-delay:.05s">
         <h2>Навички</h2>
         <div class="muted" style="display:flex;flex-wrap:wrap;gap:8px">
           <span class="badge">Розвиток мережі</span>
@@ -150,7 +182,7 @@
         </div>
       </section>
 
-      <section class="card" aria-labelledby="exp" id="exp" style="grid-column:1/-1">
+      <section class="card reveal" id="exp" style="grid-column:1/-1;transition-delay:.1s">
         <h2>Досвід</h2>
         <ul class="timeline">
           <li>
@@ -188,13 +220,13 @@
         </ul>
       </section>
 
-      <section class="card" aria-labelledby="edu" id="edu">
+      <section class="card reveal" id="edu" style="transition-delay:.15s">
         <h2>Освіта</h2>
         <p><strong>ПолтНТУ ім. Ю. Кондратюка</strong> — Фінанси, банківська справа та страхування (2018–2020)</p>
         <p><strong>Коледж управління економіки та права ПДАА</strong> — Оціночна діяльність (2015–2018)</p>
       </section>
 
-      <section class="card" aria-labelledby="contact" id="contact">
+      <section class="card reveal" id="contact" style="transition-delay:.2s">
         <h2>Контакти</h2>
         <div class="contact">
           <a href="tel:+380993586621" title="Подзвонити"><span class="sr-only">Телефон:</span> +38 (099) 358‑66‑21</a>
@@ -212,11 +244,19 @@
   </div>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Theme toggle
     const root = document.documentElement; const apply = (m)=>root.classList.toggle('light', m==='light');
     const saved = localStorage.getItem('mode'); if(saved){ apply(saved); }
     document.getElementById('modeToggle').addEventListener('click', ()=>{ const next = root.classList.contains('light')?'dark':'light'; apply(next); localStorage.setItem('mode', next); });
     document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='t'){ document.getElementById('modeToggle').click(); }});
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold:.12 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 
   <!-- SEO: структуровані дані -->
