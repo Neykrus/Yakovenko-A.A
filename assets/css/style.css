@@ -57,24 +57,10 @@ a{color:inherit}
 .timeline .tl{list-style:none;margin:0;padding:0;position:relative}
 .timeline .tl::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:4px;background: color-mix(in oklab, var(--text) 10%, transparent);border-radius:3px}
 .timeline .tl>li{position:relative;padding-left:56px;margin:22px 0}
-.timeline .tl>li::marker{content:""}
-.timeline .tl>li::before{content:"";position:absolute;left:8px;top:10px;width:20px;height:20px;border-radius:50%;background:var(--accent);
+.timeline .tl>li::before{content:"";position:absolute;left:8px;top:10px;width:20px;height:20px;border-radius:50%;background: var(--accent);
   box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 15%, transparent)}
 .tl-card{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:14px 16px}
 .tl-card h3{margin:0 0 6px}
-
-/* Projects */
-.projects .proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media (max-width:1080px){.projects .proj-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.projects .proj-grid{grid-template-columns:1fr}}
-.proj-card{background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:14px 14px;
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
-.proj-card:hover{transform:translateY(-3px); box-shadow:10px 10px 0 color-mix(in oklab,#000 35%,transparent); border-color:color-mix(in oklab,var(--accent) 40%, transparent);}
-.proj-hdr{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
-.badge{display:inline-block;align-self:flex-start;font-size:12px;padding:4px 8px;border-radius:999px;
-  background:color-mix(in oklab,var(--accent) 22%, transparent); border:1px solid color-mix(in oklab,var(--accent) 40%, transparent)}
-.proj-desc{color:var(--muted);margin:0 0 8px}
-.proj-kpi{margin:0;padding-left:16px}
 
 /* KPIs */
 .kpis .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 14px}
@@ -86,6 +72,19 @@ a{color:inherit}
 /* Skills */
 .skills-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:8px 0 0;padding:0;list-style:"•  " inside}
 @media (max-width:700px){.skills-list{grid-template-columns:1fr}}
+
+/* Projects */
+.projects .proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:1100px){.projects .proj-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.projects .proj-grid{grid-template-columns:1fr}}
+.proj-card{background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:14px 14px;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.proj-card:hover{transform:translateY(-3px) scale(1.01); box-shadow:10px 10px 0 color-mix(in oklab,#000 35%,transparent); border-color: color-mix(in oklab,var(--accent) 40%, var(--line));}
+.proj-hdr{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.badge{display:inline-block;align-self:flex-start;font-size:12px;padding:4px 8px;border-radius:999px;
+  background:color-mix(in oklab,var(--accent) 22%, transparent); border:1px solid color-mix(in oklab,var(--accent) 40%, transparent)}
+.proj-desc{color:var(--muted);margin:0 0 8px}
+.proj-kpi{margin:0;padding-left:16px}
 
 /* NOW block */
 .now .now-card{display:flex;align-items:center;gap:14px;justify-content:flex-start;
@@ -100,5 +99,5 @@ a{color:inherit}
 
 /* Footer & back-to-top */
 .ftr{display:flex;justify-content:center;padding:18px;color:var(--muted)}
-.btt{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--text)}
+.btt{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--text);transition:opacity .2s ease, transform .2s ease}
 .btt:hover{transform:translateY(-1px)}
