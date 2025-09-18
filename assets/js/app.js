@@ -53,6 +53,14 @@ const dict={
     qual2:"Adaptable to market change",
     qual3:"Balance of analytics & execution",
     qual4:"Customer & results oriented",
+
+exp1:"+22% revenue in the first month, margin growth; launched promotions and SOPs",
+exp2:"Managed 10+ stores; solved staff shortage; ensured stable KPI growth",
+exp3:"+80% profit in a year thanks to process optimization and team work",
+exp4:"High NPS, excellent results in mystery shopper checks, fast promotion to deputy director",
+exp5:"Currently responsible for vape category development and assortment in 150+ stores",
+aboutText:"I started my retail journey at 18. There were pauses along the way, but each return gave me a new level of experience and responsibility. I’ve worked with a wide range of products — from spare parts and photo equipment to modern vape products. For me, it’s not just about selling, but about building systems: spotting growth opportunities, structuring processes, and empowering teams. As a leader, I combine human qualities with a strong focus on results: I know how to support my team while keeping performance at the core. Today, at 25, I’m responsible for developing the vape category and managing assortment across 150+ stores — and I see this as an opportunity to scale results even further.",
+
     credoText:"My principle is simple: any business can become profitable if you understand the customer, build the right processes, and empower the team with clear tools.",
     goalsText:"I'm looking for roles where I can scale directions, manage assortment, build processes, and deliver measurable results. I value team culture and real impact on growth.",
     contactText:"Open to opportunities in retail and e‑commerce. Reach me on Telegram or Email.",
@@ -63,7 +71,7 @@ const toggle=document.getElementById('langToggle');
 toggle.addEventListener('click',()=>{
   const isUA=document.documentElement.getAttribute('data-lang')==='ua';
   document.documentElement.setAttribute('data-lang', isUA ? 'en':'ua');
-  toggle.textContent = isUA ? '🇬🇧 / 🇺🇦' : '🇺🇦 / 🇬🇧';
+  toggle.textContent = isUA ? 'EN / 🇺🇦' : '🇺🇦 / EN';
   if(isUA){
     // switch to EN
     for(const [k,v] of Object.entries(dict.en)){
@@ -74,3 +82,26 @@ toggle.addEventListener('click',()=>{
     location.reload();
   }
 });
+
+
+// THEME TOGGLE
+(function(){
+  const root = document.documentElement;
+  const key = "theme-pref"; // "light" | "dark" | null (system)
+  const btn = document.getElementById("themeToggle");
+  const apply = (mode)=>{
+    if(mode==="light"){ root.setAttribute("data-theme","light"); btn.textContent="🌙"; }
+    else if(mode==="dark"){ root.setAttribute("data-theme","dark"); btn.textContent="☀︎"; }
+    else { root.removeAttribute("data-theme"); btn.textContent="☀︎/🌙"; }
+  };
+  try{
+    const saved = localStorage.getItem(key);
+    apply(saved);
+    btn.addEventListener("click", ()=>{
+      const current = root.getAttribute("data-theme");
+      const next = current==="light" ? "dark" : current==="dark" ? null : "light";
+      if(next) localStorage.setItem(key, next); else localStorage.removeItem(key);
+      apply(next);
+    });
+  }catch(e){ /* ignore storage errors */ }
+})();
