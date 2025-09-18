@@ -8,104 +8,58 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// Reveal on scroll
-const revealIO=new IntersectionObserver(entries=>{
-  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); revealIO.unobserve(en.target); } });
-},{threshold:0.08, rootMargin:"0px 0px -10% 0px"});
-document.querySelectorAll('.reveal').forEach(el=>revealIO.observe(el));
+// Back to top
+let bttEl=document.getElementById('backToTop')||document.querySelector('.btt');
+window.addEventListener('scroll',()=>{ if(window.scrollY>400){ bttEl.style.opacity=1; bttEl.style.pointerEvents='auto'; } else { bttEl.style.opacity=0.2; } });
+bttEl.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Back-to-top
-const btt=document.getElementById('backToTop');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>600) btt.classList.add('show'); else btt.classList.remove('show');
-});
-btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+// Theme toggle (two-state)
+(function(){
+  const root=document.documentElement, key="theme-pref";
+  const btn=document.getElementById("themeToggle");
+  const apply=(m)=>{ if(m==="light"){root.setAttribute("data-theme","light"); btn.textContent="🌙";} else {root.setAttribute("data-theme","dark"); btn.textContent="☀︎";} };
+  let saved=localStorage.getItem(key);
+  if(!saved){ const prefersLight=window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches; saved=prefersLight?"light":"dark"; localStorage.setItem(key,saved); }
+  apply(saved);
+  btn.addEventListener("click",()=>{ const next=localStorage.getItem(key)==="light"?"dark":"light"; localStorage.setItem(key,next); apply(next); });
+})();
 
-// Active nav highlighting
-const sections=[...document.querySelectorAll('main section[id]')];
-const links=[...document.querySelectorAll('.nav-link')];
-const navIO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const id=e.target.getAttribute('id');
-      links.forEach(l=> l.classList.toggle('active', l.getAttribute('href')==='#'+id));
-    }
-  });
-},{threshold:0.6});
-sections.forEach(s=>navIO.observe(s));
-
-// Language toggle (simple dict)
+// i18n
 const dict={
   en:{
-    about:"About",experience:"Experience",skills:"Skills",qualities:"Qualities",credo:"Approach",goals:"What I seek",highlights:"Highlights",contact:"Contacts",
+    about:"About",experience:"Experience",projects:"Projects",skills:"Skills & KPIs",now:"Now",contact:"Contacts",
     name:"Andrii Yakovenko",
-    title:"Retail & Vape Lead · Growth & Operations",
-    tagline:"From spare parts and cameras to leading the vape category. I blend analytics, processes, and team execution.",
+    title:"Retail & Vape Lead — Growth & Operations",
+    oneLiner:"Building retail systems, not just sales.",
     seeExperience:"See Experience",contactMe:"Contact Me",
-    aboutText:"Retail development specialist with 8+ years of experience. From spare parts and electronics to the vape industry. Currently responsible for category development and assortment across 150+ retail locations.",
-    skill1:"Multi-store management from 10 to 150+ locations",
-    skill2:"Assortment strategy and optimization",
-    skill3:"Operational processes and SOPs",
-    skill4:"KPIs: profit, revenue, margin",
-    skill5:"Team leadership and staff development",
-    skill6:"Promotions and retail campaigns",
-    qual1:"Systematic and disciplined",
-    qual2:"Adaptable to market change",
-    qual3:"Balance of analytics & execution",
-    qual4:"Customer & results oriented",
-
-exp1:"+22% revenue in the first month, margin growth; launched promotions and SOPs",
-exp2:"Managed 10+ stores; solved staff shortage; ensured stable KPI growth",
-exp3:"+80% profit in a year thanks to process optimization and team work",
-exp4:"High NPS, excellent results in mystery shopper checks, fast promotion to deputy director",
-exp5:"Currently responsible for vape category development and assortment in 150+ stores",
-aboutText:"I started my retail journey at 18. There were pauses along the way, but each return gave me a new level of experience and responsibility. I’ve worked with a wide range of products — from spare parts and photo equipment to modern vape products. For me, it’s not just about selling, but about building systems: spotting growth opportunities, structuring processes, and empowering teams. As a leader, I combine human qualities with a strong focus on results: I know how to support my team while keeping performance at the core. Today, at 25, I’m responsible for developing the vape category and managing assortment across 150+ stores — and I see this as an opportunity to scale results even further.",
-
-    credoText:"My principle is simple: any business can become profitable if you understand the customer, build the right processes, and empower the team with clear tools.",
-    goalsText:"I'm looking for roles where I can scale directions, manage assortment, build processes, and deliver measurable results. I value team culture and real impact on growth.",
-    contactText:"Open to opportunities in retail and e‑commerce. Reach me on Telegram or Email.",
-    hire:"Hire me"
+    aboutText:"I started my retail journey at 18. There were pauses along the way, but each return gave me a new level of experience and responsibility. I’ve worked with various products — from spare parts and photo equipment to modern vape products. I focus on building systems: finding growth points, structuring processes, and empowering teams. As a leader, I combine human qualities with a strong focus on results. Today, at 25, I’m responsible for the vape category and assortment across 150+ locations — and I see this as an opportunity to scale results even further.",
+    exp1:"+22% revenue in the first month, margin growth; launched promotions and SOPs.",
+    exp2:"Managed 10+ stores; solved staffing deficit; ensured steady KPI growth.",
+    exp3:"+80% profit in a year thanks to process optimization and team work.",
+    exp4:"High NPS, excellent mystery shopper results, rapid promotion to deputy director.",
+    kpi1:"revenue in the 1st month",kpi2:"profit in a year",kpi3:"stores managed",kpi4:"locations in assortment",
+    skill1:"Multi-store management (10–150+)", skill2:"Assortment strategy & optimization", skill3:"Operations & SOPs",
+    skill4:"KPIs: profit, revenue, margin", skill5:"Hiring & team development", skill6:"Promotions & retail marketing",
+    now:"Now", nowText:"Leading the vape category and assortment in 150+ locations. Launching promos, expanding assortment and coordinating network operations.",
+    contact:"Contacts", footer:"open to new opportunities",
+    proj1t:"Processes → +80% profit", proj1d:"Rebuilt operations, optimized assortment and team incentives.",
+    proj2t:"Fast revenue growth", proj2d:"Launched promos and introduced transparent sales KPIs.",
+    proj3t:"Network management", proj3d:"Closed staffing gaps, standardized ops and stabilized KPIs across 10+ stores.",
+    proj4t:"Service & career growth", proj4d:"High NPS, excellent mystery shopper results, rapid promotion to deputy director."
   }
 };
-const toggle=document.getElementById('langToggle');
-toggle.addEventListener('click',()=>{
-  const isUA=document.documentElement.getAttribute('data-lang')==='ua';
-  document.documentElement.setAttribute('data-lang', isUA ? 'en':'ua');
-  toggle.textContent = isUA ? 'EN / 🇺🇦' : '🇺🇦 / EN';
+const langBtn=document.getElementById('langToggle');
+langBtn.addEventListener('click',()=>{
+  const isUA=document.documentElement.getAttribute('lang')==='uk';
   if(isUA){
-    // switch to EN
+    document.documentElement.setAttribute('lang','en');
+    langBtn.textContent='EN / 🇺🇦';
     for(const [k,v] of Object.entries(dict.en)){
-      document.querySelectorAll('[data-i18n="'+k+'"]').forEach(el=> el.textContent = v);
+      document.querySelectorAll('[data-i18n="'+k+'"]').forEach(el=> el.textContent=v);
     }
   }else{
-    // reload to restore UA text from HTML
+    document.documentElement.setAttribute('lang','uk');
+    langBtn.textContent='🇺🇦 / EN';
     location.reload();
   }
 });
-
-
-// THEME TOGGLE (two-state: light <-> dark)
-(function(){
-  const root = document.documentElement;
-  const key = "theme-pref"; // "light" | "dark"
-  const btn = document.getElementById("themeToggle");
-  const apply = (mode)=>{
-    if(mode==="light"){ root.setAttribute("data-theme","light"); btn.textContent="🌙"; }
-    else { root.setAttribute("data-theme","dark"); btn.textContent="☀︎"; }
-  };
-  try{
-    let saved = localStorage.getItem(key);
-    if(!saved){
-      // default based on system
-      const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-      saved = prefersLight ? "light" : "dark";
-      localStorage.setItem(key, saved);
-    }
-    apply(saved);
-    btn.addEventListener("click", ()=>{
-      const next = (localStorage.getItem(key)==="light") ? "dark" : "light";
-      localStorage.setItem(key, next);
-      apply(next);
-    });
-  }catch(e){ /* ignore storage errors */ }
-})();

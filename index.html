@@ -1,209 +1,177 @@
+
 <!DOCTYPE html>
-<html lang="uk" class="scroll-smooth antialiased">
+<html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Андрій Яковенко — Retail/Category Manager (Vape, FMCG)</title>
-  <meta name="description" content="25 років, з 18 — у ритейлі. Останні роки — вейп-напрямок. Розвиток і асортимент 150+ ТТ. Людяність + результат. UA/EN.">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://your-username.github.io/andrii-resume/">
-  <meta property="og:title" content="Андрій Яковенко — Retail/Category Manager">
-  <meta property="og:description" content="Відповідаю за розвиток та асортимент 150+ ТТ. Людяність + результат.">
-  <meta property="og:image" content="https://your-username.github.io/andrii-resume/assets/og-cover.png">
-  <meta property="og:locale" content="uk_UA">
-  <meta property="og:site_name" content="Andrii Yakovenko | Resume">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Андрій Яковенко — Retail/Category Manager">
-  <meta name="twitter:description" content="150+ ТТ, KPI, постачання, промо-цикли. Людяність + результат.">
-  <meta name="twitter:image" content="https://your-username.github.io/andrii-resume/assets/og-cover.png">
-
-  <link rel="icon" href="assets/favicon.ico">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="canonical" href="https://your-username.github.io/andrii-resume/">
-
-  <!-- Tailwind via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily:{ sans: ['Inter','system-ui','-apple-system','Segoe UI','Roboto','Ubuntu','Cantarell','Noto Sans','Helvetica Neue','Arial','sans-serif'] }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    :root{ color-scheme: light dark; }
-    /* Animated background */
-    .bg-animated::before{
-      content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(40% 40% at 30% 20%, rgba(99,102,241,.25), transparent 60%),
-                  radial-gradient(35% 35% at 70% 80%, rgba(6,182,212,.25), transparent 60%),
-                  radial-gradient(30% 30% at 55% 45%, rgba(236,72,153,.25), transparent 60%);
-      filter: blur(40px);
-      animation: float 16s ease-in-out infinite alternate;
-      pointer-events:none;
-    }
-    @keyframes float {
-      0% { transform: translate3d(-2%, -2%, 0) scale(1); }
-      100% { transform: translate3d(2%, 2%, 0) scale(1.05); }
-    }
-  </style>
-
-  <script defer src="js/theme-toggle.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Андрій Яковенко — Retail & Vape Lead</title>
+  <meta name="description" content="Retail & Vape Lead. Systems, growth, team execution." />
+  <meta property="og:title" content="Andrii Yakovenko — Retail & Vape Lead" />
+  <meta property="og:description" content="Building retail systems, not just sales. 150+ locations, +22% revenue, +80% profit." />
+  <meta property="og:image" content="assets/img/og.png" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-  <a href="#top" id="top" class="sr-only">top</a>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-950/40 border-b border-slate-200/60 dark:border-slate-800">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <div class="font-black tracking-tight text-lg">Andrii Yakovenko</div>
-      <div class="flex items-center gap-2">
-        <a href="#now" class="inline-flex items-center px-3 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition">Нині</a>
-        <button id="theme-toggle" class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition">Тема</button>
-      </div>
+<body>
+  <header class="hdr">
+    <div class="brand">AY</div>
+    <nav class="nav">
+      <a href="#about" class="nav-link" data-i18n="about">Про мене</a>
+      <a href="#experience" class="nav-link" data-i18n="experience">Досвід</a>
+      <a href="#projects" class="nav-link" data-i18n="projects">Проєкти</a>
+      <a href="#skills" class="nav-link" data-i18n="skills">Навички</a>
+      <a href="#now" class="nav-link" data-i18n="now">Нині</a>
+      <a href="#contact" class="nav-link" data-i18n="contact">Контакти</a>
+    </nav>
+    <div class="tools">
+      <button id="themeToggle" class="btn small" aria-label="Toggle theme">☀︎/🌙</button>
+      <button id="langToggle" class="btn small">🇺🇦 / EN</button>
+      <a class="btn outline small" href="assets/CV_UA.docx" download>CV</a>
     </div>
   </header>
 
-  <!-- Hero with animated background -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-animated"></div>
-    <div class="relative mx-auto max-w-6xl px-4 py-16 sm:py-24">
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Андрій Яковенко</h1>
-      <p class="mt-4 text-lg text-slate-700 dark:text-slate-300">Retail / Category Manager — Vape, FMCG</p>
-      <p class="mt-2 text-slate-600 dark:text-slate-400">З 18 років у ритейлі (були паузи). Останні роки — вейп-напрямок. Зараз відповідаю за розвиток та асортимент 150+ ТТ. Поєдную людяність і результат.</p>
-      <div class="mt-6 flex gap-3">
-        <a href="#experience" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition">Досвід</a>
-        <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 text-slate-900 border border-slate-200 hover:bg-slate-200 hover:-translate-y-0.5 active:translate-y-0 transition">Проєкти</a>
+  <main class="container">
+    <section id="hero" class="hero">
+      <div class="hero-left">
+        <img src="assets/img/avatar_circle.png" alt="Фото" class="avatar" />
       </div>
-    </div>
-  </section>
-
-  <!-- Now (full width, glow in dark) -->
-  <section id="now" class="relative mx-auto w-full my-16">
-    <div class="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 shadow-sm">
-      <div class="pointer-events-none absolute inset-0 hidden dark:block">
-        <div class="absolute -top-24 left-1/2 -translate-x-1/2 h-[420px] w-[720px] rounded-full blur-3xl opacity-35 bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400"></div>
-        <div class="absolute -bottom-24 left-1/3 h-[320px] w-[560px] rounded-full blur-3xl opacity-25 bg-gradient-to-tr from-emerald-400 via-sky-400 to-indigo-400"></div>
-      </div>
-      <div class="pointer-events-none absolute inset-0 block dark:hidden">
-        <div class="absolute -top-20 right-20 h-48 w-80 rounded-full blur-2xl opacity-20 bg-gradient-to-r from-sky-400 to-indigo-400"></div>
-      </div>
-      <div class="relative p-6 sm:p-10">
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Нині</h2>
-        <p class="mt-3 text-slate-700 dark:text-slate-200 leading-relaxed">
-          Відповідаю за розвиток та асортимент 150+ ТТ, вибудовую постачання, KPI та промо-цикли. Балансую людяність і результат.
-        </p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 text-slate-900 dark:text-white border border-slate-200/70 dark:border-white/20 hover:bg-white/20 dark:hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60 transition">Дивитись KPI</a>
-          <a href="#contacts" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-500 text-white font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition">Звʼязатися</a>
+      <div class="hero-right">
+        <h1 data-i18n="name">Андрій Яковенко</h1>
+        <p class="role" data-i18n="title">Retail & Vape Lead — Growth & Operations</p>
+        <p class="one" data-i18n="oneLiner">Building retail systems, not just sales.</p>
+        <div class="hero-actions">
+          <a href="#experience" class="btn primary" data-i18n="seeExperience">Переглянути досвід</a>
+          <a href="#contact" class="btn outline" data-i18n="contactMe">Зв'язатися</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="mx-auto max-w-6xl px-4 my-16">
-    <h2 class="text-2xl font-bold tracking-tight">Про мене</h2>
-    <div class="mt-4 grid md:grid-cols-2 gap-6">
-      <div class="bg-white/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
-        <p class="text-slate-700 dark:text-slate-300">
-          Людяний керівник без «деспотизму». Працюю з цифрами та людьми: матриця, ціноутворення, постачання, ABC-аналіз, промо.
+    <section id="about" class="panel">
+      <h2 data-i18n="about">Про мене</h2>
+      <p data-i18n="aboutText">
+        Свій шлях у ритейлі я почав у 18 років. Були паузи, але кожне повернення приносило новий рівень досвіду та відповідальності.
+        Я працював із різними категоріями товарів — від запчастин і фототехніки до сучасних вейп-продуктів.
+        Для мене важливо не просто продавати, а створювати системи: знаходити точки росту, будувати процеси й робити команди сильнішими.
+        У керівництві я поєдную людяність і вимогливість: вмію підтримати команду, але завжди орієнтуюсь на результат.
+        Сьогодні, у 25 років, я відповідаю за розвиток вейп-напрямку та асортимент у 150+ торгових точках — і бачу в цьому можливість масштабувати результати ще далі.
+      </p>
+    </section>
+
+    <section id="experience" class="panel timeline">
+      <h2 data-i18n="experience">Досвід</h2>
+      <ol class="tl">
+        <li><div class="tl-card"><h3>S.V Group</h3><p data-i18n="exp1">+22% до виручки за перший місяць, зростання маржі; запуск акцій та регламентів.</p></div></li>
+        <li><div class="tl-card"><h3>UVape</h3><p data-i18n="exp2">Керував мережею 10+ магазинів; подолав кадровий дефіцит; забезпечив стабільний ріст KPI.</p></div></li>
+        <li><div class="tl-card"><h3>Vape Station</h3><p data-i18n="exp3">+80% прибутку за рік завдяки оптимізації процесів і роботі команди.</p></div></li>
+        <li><div class="tl-card"><h3>MOYO</h3><p data-i18n="exp4">Високий NPS, відмінні результати у перевірках «таємного покупця», швидке підвищення до замдиректора.</p></div></li>
+      </ol>
+    </section>
+
+    <section id="projects" class="panel projects">
+      <h2 data-i18n="projects">Проєкти</h2>
+      <div class="proj-grid">
+        <article class="proj-card hover-lift">
+          <header class="proj-hdr">
+            <span class="badge">Vape Station</span>
+            <h3 data-i18n="proj1t">Процеси → +80% прибутку</h3>
+          </header>
+          <p class="proj-desc" data-i18n="proj1d">
+            Перебудував операційні регламенти, оптимізував асортимент та мотивацію команди.
+          </p>
+          <ul class="proj-kpi">
+            <li><strong>До:</strong> фрагментовані процеси, низька маржа</li>
+            <li><strong>Після:</strong> +80% прибутку за рік</li>
+          </ul>
+        </article>
+
+        <article class="proj-card hover-lift">
+          <header class="proj-hdr">
+            <span class="badge">S.V Group</span>
+            <h3 data-i18n="proj2t">Швидкий ріст виручки</h3>
+          </header>
+          <p class="proj-desc" data-i18n="proj2d">
+            Запустив промо-кампанії та ввів прозорі KPI для продавців.
+          </p>
+          <ul class="proj-kpi">
+            <li><strong>До:</strong> нерівномірні продажі місяць до місяця</li>
+            <li><strong>Після:</strong> +22% виручки в перший місяць</li>
+          </ul>
+        </article>
+
+        <article class="proj-card hover-lift">
+          <header class="proj-hdr">
+            <span class="badge">UVape</span>
+            <h3 data-i18n="proj3t">Мережеве управління</h3>
+          </header>
+          <p class="proj-desc" data-i18n="proj3d">
+            Закрив кадровий дефіцит, стандартизував операції, стабілізував KPI у 10+ магазинах.
+          </p>
+          <ul class="proj-kpi">
+            <li><strong>До:</strong> нестача персоналу, різний сервіс</li>
+            <li><strong>Після:</strong> стабільне зростання KPI</li>
+          </ul>
+        </article>
+
+        <article class="proj-card hover-lift">
+          <header class="proj-hdr">
+            <span class="badge">MOYO</span>
+            <h3 data-i18n="proj4t">Сервіс & кар’єрний ріст</h3>
+          </header>
+          <p class="proj-desc" data-i18n="proj4d">
+            Високий NPS, відмінні результати у перевірках «таємного покупця», швидке підвищення до замдиректора.
+          </p>
+          <ul class="proj-kpi">
+            <li><strong>До:</strong> стартова позиція</li>
+            <li><strong>Після:</strong> замдиректора + стабільний сервіс</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="panel kpis">
+      <h2 data-i18n="skills">Навички та показники</h2>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="num">+22%</div><div class="lbl" data-i18n="kpi1">виручки у 1-й місяць</div></div>
+        <div class="kpi"><div class="num">+80%</div><div class="lbl" data-i18n="kpi2">прибутку за рік</div></div>
+        <div class="kpi"><div class="num">10+</div><div class="lbl" data-i18n="kpi3">магазинів під управлінням</div></div>
+        <div class="kpi"><div class="num">150+</div><div class="lbl" data-i18n="kpi4">торгових точок в асортименті</div></div>
+      </div>
+      <ul class="skills-list">
+        <li data-i18n="skill1">Управління мережею від 10 до 150+ ТТ</li>
+        <li data-i18n="skill2">Асортиментна стратегія та оптимізація</li>
+        <li data-i18n="skill3">Операційні процеси та регламенти</li>
+        <li data-i18n="skill4">KPI: прибуток, виручка, маржа</li>
+        <li data-i18n="skill5">Підбір і розвиток персоналу</li>
+        <li data-i18n="skill6">Запуск акцій і промо</li>
+      </ul>
+    </section>
+
+    <section id="now" class="panel now">
+      <h2 data-i18n="now">Нині</h2>
+      <div class="now-card">
+        <h3>🎯</h3>
+        <p data-i18n="nowText">
+          Відповідаю за розвиток вейп-напрямку та асортимент у 150+ ТТ.
+          Впроваджую нові акції, розширюю асортимент і координую роботу мережі.
         </p>
       </div>
-      <div class="bg-white/90 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
-        <ul class="space-y-2 text-slate-700 dark:text-slate-300 list-disc list-inside">
-          <li>Ритейл з 18 років (були паузи)</li>
-          <li>Спеціалізація — вейп-напрямок (останні роки)</li>
-          <li>150+ торгових точок у відповідальності</li>
-        </ul>
+    </section>
+
+    <section id="contact" class="panel contact">
+      <h2 data-i18n="contact">Контакти</h2>
+      <div class="cta-row">
+        <a href="https://t.me/Neykrus" class="btn primary">Telegram</a>
+        <a href="mailto:andrii@example.com" class="btn outline">Email</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Experience -->
-  <section id="experience" class="mx-auto max-w-6xl px-4 my-16">
-    <h2 class="text-2xl font-bold tracking-tight">Досвід</h2>
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <!-- Example card -->
-      <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition">
-        <h3 class="font-semibold">S.V Group — Category/Project</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Оновлення матриці, баланс дефіцитів, промо-планування.</p>
-        <div class="mt-3 text-xs text-slate-500">KPI: оборот ↑, OOS ↓, маржа стаб.</div>
-      </article>
-      <!-- Add your other cards similarly: UVape, Vape Station, Moyo -->
-      <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition">
-        <h3 class="font-semibold">UVape — Category</h3>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Асортимент, ціноутворення, постачання, контент.</p>
-        <div class="mt-3 text-xs text-slate-500">KPI: оборот ↑, дефіцити керовані.</div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Recommendations -->
-  <section id="refs" class="mx-auto max-w-6xl px-4 my-16">
-    <h2 class="text-2xl font-bold tracking-tight">Рекомендації</h2>
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <figure class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition">
-        <blockquote class="text-slate-700 dark:text-slate-300">
-          “Андрій зняв «дефіцитні» вузли, вирівняв асортимент по 150+ ТТ і підвищив оборот.”
-        </blockquote>
-        <figcaption class="mt-4 text-sm text-slate-500">
-          Сергій В., керівник напрямку (S.V Group)
-        </figcaption>
-      </figure>
-      <figure class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition">
-        <blockquote class="text-slate-700 dark:text-slate-300">
-          “Відповідальний і спокійний у стресі. Вміє досягати результату без токсичності.”
-        </blockquote>
-        <figcaption class="mt-4 text-sm text-slate-500">
-          Юлія П., керівниця магазину
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="mx-auto max-w-6xl px-4 my-16">
-    <h2 class="text-2xl font-bold tracking-tight">Проєкти</h2>
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article class="group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-lg transition">
-        <div class="aspect-video bg-slate-100 dark:bg-slate-800"></div>
-        <div class="p-5">
-          <h3 class="font-semibold group-hover:underline underline-offset-4">Перезапуск POD-матриці</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Фокус на дефіцитних картриджах → пік продажів у перший тиждень.</p>
-          <div class="mt-3 text-xs text-slate-500">KPI: +Х% обороту, –Y% OOS</div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Contacts -->
-  <section id="contacts" class="mx-auto max-w-6xl px-4 my-16">
-    <h2 class="text-2xl font-bold tracking-tight">Контакти</h2>
-    <div class="mt-4">
-      <a class="text-blue-700 hover:text-blue-800 underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition" href="mailto:you@example.com">you@example.com</a>
-    </div>
-  </section>
-
-  <!-- Back to top -->
-  <a href="#top" class="fixed bottom-6 right-6 inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white shadow hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition" aria-label="Back to top">↑</a>
-
-  <footer class="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">
-    © {year} Андрій Яковенко
+  <footer class="ftr">
+    <p>© Andrii Yakovenko — <span data-i18n="footer">відкритий до нових можливостей</span></p>
   </footer>
 
-  <script>
-    // Simple year replacement
-    document.body.innerHTML = document.body.innerHTML.replace("{year}", new Date().getFullYear());
-  </script>
+  <button id="backToTop" class="btt">↑</button>
+
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
