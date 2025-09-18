@@ -166,3 +166,44 @@ a{color:var(--brand)}
 
 /* Ensure full-span cards span across grid */
 .cards .full-span { grid-column: 1 / -1; }
+
+
+/* Force "Нині" to span entire row in cards grid */
+.cards .full-span { grid-column: 1 / -1 !important; }
+
+
+/* Light theme contrast improvements */
+:root[data-theme="light"] .btn.primary {
+  background: linear-gradient(180deg,#007aff,#005bbb);
+  color: #fff;
+  border: none;
+}
+:root[data-theme="light"] .btn.primary:hover {
+  background: linear-gradient(180deg,#0a84ff,#0060df);
+}
+:root[data-theme="light"] .btn {
+  color: #0b0c0f;
+  border: 1px solid rgba(0,0,0,.25);
+  background: rgba(0,0,0,.04);
+}
+:root[data-theme="light"] .btn:hover {
+  background: rgba(0,0,0,.08);
+}
+
+/* Card contrast in light theme */
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .kpi {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Accent for "Нині" block */
+.card.full-span {
+  background: linear-gradient(135deg,rgba(10,132,255,.08),rgba(100,210,255,.08));
+  border: 1px solid rgba(10,132,255,.25);
+}
+:root[data-theme="light"] .card.full-span {
+  background: linear-gradient(135deg,rgba(10,132,255,.08),rgba(100,210,255,.1));
+  border: 1px solid rgba(0,122,255,.3);
+}
