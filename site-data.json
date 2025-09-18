@@ -1,0 +1,86 @@
+{
+  "ua": {
+    "name": "Андрій Яковенко",
+    "tagline": "Менеджер роздрібного напрямку • Асортимент & розвиток мережі",
+    "summary": "З 18 років у ритейлі. Перерви давали новий поштовх — зараз 25 і сфокусований на зростанні, якості асортименту та впорядкуванні процесів. Останні роки — вейп-напрямок: відповідаю за розвиток й асортимент у 150+ торгових точках, постачання, повернення, презентації, мерчандайзинг. Люблю працювати з ШІ, готовий до релокації.",
+    "highlights": [
+      "Керування асортиментом у 150+ ТТ: підбір SKU, планування поставок, запобігання «діркам» на вітрині.",
+      "Процеси: повернення постачальнику, комплектація гліцерином/нікотином, чисті стандарти упаковки.",
+      "Мерчандайзинг і промо: вітрини, креативи, інструкції для персоналу, презентації для партнерів.",
+      "Аналітика: базові ABC/XYZ, звіти, контроль дефіциту картриджів/подів (XROS тощо).",
+      "Технічний бекграунд: комфортно працюю з Google Sheets/Docs, ChatGPT, нейромережами для дизайну/аналізу."
+    ],
+    "skills": [
+      "Асортиментна матриця",
+      "Постачання та планування",
+      "Повернення/браки",
+      "Мерчандайзинг",
+      "Переговори з постачальниками",
+      "Google Sheets/Docs",
+      "PowerPoint/Keynote",
+      "ChatGPT/AI інструменти"
+    ],
+    "projects": [
+      {
+        "title": "Розвиток вейп-напрямку",
+        "desc": "Вирівнювання представленості картриджів і POD-систем, робота з дефіцитом, підготовка повернень та планограм."
+      },
+      {
+        "title": "CBD / Wellness-зона",
+        "desc": "Концепт зони знайомства з CBD та мікродозингом; фокус на безпечний сервіс і просвіту."
+      },
+      {
+        "title": "Візуальні матеріали",
+        "desc": "Плакати/інструкції для персоналу, промо-креативи у фірмовому стилі."
+      }
+    ],
+    "contacts": {
+      "location": "Україна, готовий до релокації",
+      "tg": "t.me/andrii",
+      "email": "andrii@example.com"
+    },
+    "cta": "Скачати резюме (DOCX)"
+  },
+  "en": {
+    "name": "Andrii Yakovenko",
+    "tagline": "Retail Manager • Assortment & Network Growth",
+    "summary": "In retail since 18. Breaks gave me new momentum — now 25 and focused on growth, assortment quality and process discipline. Recent years: vape vertical — responsible for assortment and development across 150+ outlets, supply, returns, presentations, merchandising. I enjoy working with AI and I'm open to relocation.",
+    "highlights": [
+      "Assortment control across 150+ stores: SKU curation, supply planning, avoiding shelf gaps.",
+      "Processes: vendor returns, glycerin/nicotine kitting, clean packaging standards.",
+      "Merch & Promo: shelves, creatives, staff instructions, partner presentations.",
+      "Analytics: basic ABC/XYZ, reporting, cartridge/POD shortage control (e.g., XROS).",
+      "Technical: comfortable with Google Sheets/Docs, ChatGPT and design/analysis AI tools."
+    ],
+    "skills": [
+      "Assortment Matrix",
+      "Supply & Planning",
+      "Returns/Defects",
+      "Merchandising",
+      "Vendor Negotiations",
+      "Google Sheets/Docs",
+      "PowerPoint/Keynote",
+      "ChatGPT/AI Tools"
+    ],
+    "projects": [
+      {
+        "title": "Vape Category Growth",
+        "desc": "Balanced presentation of cartridges and PODs, shortage mitigation, returns and planograms."
+      },
+      {
+        "title": "CBD / Wellness Zone",
+        "desc": "Concept for safe, educational CBD introduction and microdosing."
+      },
+      {
+        "title": "Visual Materials",
+        "desc": "Posters/instructions for staff, promo creatives in brand style."
+      }
+    ],
+    "contacts": {
+      "location": "Ukraine, open to relocation",
+      "tg": "t.me/andrii",
+      "email": "andrii@example.com"
+    },
+    "cta": "Download CV (DOCX)"
+  }
+}

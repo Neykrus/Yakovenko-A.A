@@ -1,177 +1,114 @@
-
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Андрій Яковенко — Retail & Vape Lead</title>
-  <meta name="description" content="Retail & Vape Lead. Systems, growth, team execution." />
-  <meta property="og:title" content="Andrii Yakovenko — Retail & Vape Lead" />
-  <meta property="og:description" content="Building retail systems, not just sales. 150+ locations, +22% revenue, +80% profit." />
-  <meta property="og:image" content="assets/img/og.png" />
+  <title>Андрій Яковенко — Резюме</title>
+  <meta name="description" content="Резюме Андрія Яковенка: менеджер роздрібного напрямку, асортимент & розвиток мережі, AI-підхід, готовність до релокації." />
+  <meta property="og:title" content="Андрій Яковенко — Резюме" />
+  <meta property="og:description" content="Менеджер роздрібного напрямку. Асортимент & розвиток мережі. Люблю працювати з ШІ. Готовий до релокації." />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --ring: 0 122 255; }
+    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; }
+    .theme-transition * { transition: background-color .3s, color .3s, border-color .3s; }
+    .glass { backdrop-filter: blur(8px); background-color: rgb(255 255 255 / .6); }
+    .dark .glass { background-color: rgb(17 24 39 / .6); }
+    .card { border-radius: 1.2rem; }
+    .shadow-soft { box-shadow: 0 6px 30px rgba(2,6,23,.08); }
+    .dark .shadow-soft { box-shadow: 0 6px 30px rgba(0,0,0,.35); }
+    :focus-visible { outline: 2px solid rgb(var(--ring)); outline-offset: 2px; }
+  </style>
 </head>
-<body>
-  <header class="hdr">
-    <div class="brand">AY</div>
-    <nav class="nav">
-      <a href="#about" class="nav-link" data-i18n="about">Про мене</a>
-      <a href="#experience" class="nav-link" data-i18n="experience">Досвід</a>
-      <a href="#projects" class="nav-link" data-i18n="projects">Проєкти</a>
-      <a href="#skills" class="nav-link" data-i18n="skills">Навички</a>
-      <a href="#now" class="nav-link" data-i18n="now">Нині</a>
-      <a href="#contact" class="nav-link" data-i18n="contact">Контакти</a>
-    </nav>
-    <div class="tools">
-      <button id="themeToggle" class="btn small" aria-label="Toggle theme">☀︎/🌙</button>
-      <button id="langToggle" class="btn small">🇺🇦 / EN</button>
-      <a class="btn outline small" href="assets/CV_UA.docx" download>CV</a>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-sky-200/50 dark:selection:bg-sky-400/30">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:z-50 focus:top-3 focus:left-3 bg-sky-600 text-white px-3 py-2 rounded-lg">Перейти до змісту</a>
+  <header class="sticky top-0 z-40 glass border-b border-slate-900/5 dark:border-slate-50/10">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-center gap-3 py-3">
+        <div class="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500"></div>
+        <div class="mr-auto">
+          <p class="font-semibold">Андрій Яковенко</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Асортимент & розвиток мережі</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="lang-ua" class="px-3 py-1.5 text-sm rounded-xl border border-slate-200 dark:border-slate-800 aria-pressed:bg-sky-600 aria-pressed:text-white" aria-pressed="true" onclick="switchLang('ua')">UA</button>
+          <button id="lang-en" class="px-3 py-1.5 text-sm rounded-xl border border-slate-200 dark:border-slate-800 aria-pressed:bg-sky-600 aria-pressed:text-white" aria-pressed="false" onclick="switchLang('en')">EN</button>
+          <button id="theme-toggle" class="ml-1 inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900" aria-pressed="false">
+            <span class="i-sun hidden dark:inline">🌙</span><span class="i-moon inline dark:hidden">☀️</span>
+            Тема
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section id="hero" class="hero">
-      <div class="hero-left">
-        <img src="assets/img/avatar_circle.png" alt="Фото" class="avatar" />
-      </div>
-      <div class="hero-right">
-        <h1 data-i18n="name">Андрій Яковенко</h1>
-        <p class="role" data-i18n="title">Retail & Vape Lead — Growth & Operations</p>
-        <p class="one" data-i18n="oneLiner">Building retail systems, not just sales.</p>
-        <div class="hero-actions">
-          <a href="#experience" class="btn primary" data-i18n="seeExperience">Переглянути досвід</a>
-          <a href="#contact" class="btn outline" data-i18n="contactMe">Зв'язатися</a>
+  <main id="main" class="mx-auto max-w-6xl px-4">
+    <section class="grid md:grid-cols-3 gap-6 pt-10" aria-labelledby="about">
+      <div class="md:col-span-2 card shadow-soft p-6 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal>
+        <h1 id="about" class="text-3xl md:text-4xl font-black tracking-tight" data-i18n="name">Андрій Яковенко</h1>
+        <p class="mt-2 text-lg text-slate-600 dark:text-slate-300" data-i18n="tagline">Менеджер роздрібного напрямку • Асортимент & розвиток мережі</p>
+        <p class="mt-4 leading-relaxed text-slate-700 dark:text-slate-200" data-i18n="summary">З 18 років у ритейлі. Перерви давали новий поштовх — зараз 25 і сфокусований на зростанні, якості асортименту та впорядкуванні процесів. Останні роки — вейп-напрямок: відповідаю за розвиток й асортимент у 150+ торгових точках, постачання, повернення, презентації, мерчандайзинг. Люблю працювати з ШІ, готовий до релокації.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">Асортиментна матриця</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">Постачання та планування</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">Повернення/браки</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">Мерчандайзинг</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">Переговори з постачальниками</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">Google Sheets/Docs</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">PowerPoint/Keynote</span><span class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm">ChatGPT/AI інструменти</span>
+        </div>
+        <div class="mt-6">
+          <a id="cv-link" href="./resume/Andrii_Yakovenko_CV_uk.docx" class="inline-flex items-center gap-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 text-sm font-semibold">
+            📄 <span data-i18n="cta">Скачати резюме (DOCX)</span>
+          </a>
         </div>
       </div>
-    </section>
-
-    <section id="about" class="panel">
-      <h2 data-i18n="about">Про мене</h2>
-      <p data-i18n="aboutText">
-        Свій шлях у ритейлі я почав у 18 років. Були паузи, але кожне повернення приносило новий рівень досвіду та відповідальності.
-        Я працював із різними категоріями товарів — від запчастин і фототехніки до сучасних вейп-продуктів.
-        Для мене важливо не просто продавати, а створювати системи: знаходити точки росту, будувати процеси й робити команди сильнішими.
-        У керівництві я поєдную людяність і вимогливість: вмію підтримати команду, але завжди орієнтуюсь на результат.
-        Сьогодні, у 25 років, я відповідаю за розвиток вейп-напрямку та асортимент у 150+ торгових точках — і бачу в цьому можливість масштабувати результати ще далі.
-      </p>
-    </section>
-
-    <section id="experience" class="panel timeline">
-      <h2 data-i18n="experience">Досвід</h2>
-      <ol class="tl">
-        <li><div class="tl-card"><h3>S.V Group</h3><p data-i18n="exp1">+22% до виручки за перший місяць, зростання маржі; запуск акцій та регламентів.</p></div></li>
-        <li><div class="tl-card"><h3>UVape</h3><p data-i18n="exp2">Керував мережею 10+ магазинів; подолав кадровий дефіцит; забезпечив стабільний ріст KPI.</p></div></li>
-        <li><div class="tl-card"><h3>Vape Station</h3><p data-i18n="exp3">+80% прибутку за рік завдяки оптимізації процесів і роботі команди.</p></div></li>
-        <li><div class="tl-card"><h3>MOYO</h3><p data-i18n="exp4">Високий NPS, відмінні результати у перевірках «таємного покупця», швидке підвищення до замдиректора.</p></div></li>
-      </ol>
-    </section>
-
-    <section id="projects" class="panel projects">
-      <h2 data-i18n="projects">Проєкти</h2>
-      <div class="proj-grid">
-        <article class="proj-card hover-lift">
-          <header class="proj-hdr">
-            <span class="badge">Vape Station</span>
-            <h3 data-i18n="proj1t">Процеси → +80% прибутку</h3>
-          </header>
-          <p class="proj-desc" data-i18n="proj1d">
-            Перебудував операційні регламенти, оптимізував асортимент та мотивацію команди.
-          </p>
-          <ul class="proj-kpi">
-            <li><strong>До:</strong> фрагментовані процеси, низька маржа</li>
-            <li><strong>Після:</strong> +80% прибутку за рік</li>
-          </ul>
-        </article>
-
-        <article class="proj-card hover-lift">
-          <header class="proj-hdr">
-            <span class="badge">S.V Group</span>
-            <h3 data-i18n="proj2t">Швидкий ріст виручки</h3>
-          </header>
-          <p class="proj-desc" data-i18n="proj2d">
-            Запустив промо-кампанії та ввів прозорі KPI для продавців.
-          </p>
-          <ul class="proj-kpi">
-            <li><strong>До:</strong> нерівномірні продажі місяць до місяця</li>
-            <li><strong>Після:</strong> +22% виручки в перший місяць</li>
-          </ul>
-        </article>
-
-        <article class="proj-card hover-lift">
-          <header class="proj-hdr">
-            <span class="badge">UVape</span>
-            <h3 data-i18n="proj3t">Мережеве управління</h3>
-          </header>
-          <p class="proj-desc" data-i18n="proj3d">
-            Закрив кадровий дефіцит, стандартизував операції, стабілізував KPI у 10+ магазинах.
-          </p>
-          <ul class="proj-kpi">
-            <li><strong>До:</strong> нестача персоналу, різний сервіс</li>
-            <li><strong>Після:</strong> стабільне зростання KPI</li>
-          </ul>
-        </article>
-
-        <article class="proj-card hover-lift">
-          <header class="proj-hdr">
-            <span class="badge">MOYO</span>
-            <h3 data-i18n="proj4t">Сервіс & кар’єрний ріст</h3>
-          </header>
-          <p class="proj-desc" data-i18n="proj4d">
-            Високий NPS, відмінні результати у перевірках «таємного покупця», швидке підвищення до замдиректора.
-          </p>
-          <ul class="proj-kpi">
-            <li><strong>До:</strong> стартова позиція</li>
-            <li><strong>Після:</strong> замдиректора + стабільний сервіс</li>
-          </ul>
-        </article>
+      <div class="card shadow-soft p-6 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal>
+        <h2 class="text-xl font-semibold">Контакти</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>📍 Україна, готовий до релокації</li>
+          <li>✉️ <a class="underline decoration-dotted" href="mailto:andrii@example.com">andrii@example.com</a></li>
+          <li>💬 <a class="underline decoration-dotted" href="https://t.me/andrii">t.me/andrii</a></li>
+        </ul>
       </div>
     </section>
 
-    <section id="skills" class="panel kpis">
-      <h2 data-i18n="skills">Навички та показники</h2>
-      <div class="kpi-grid">
-        <div class="kpi"><div class="num">+22%</div><div class="lbl" data-i18n="kpi1">виручки у 1-й місяць</div></div>
-        <div class="kpi"><div class="num">+80%</div><div class="lbl" data-i18n="kpi2">прибутку за рік</div></div>
-        <div class="kpi"><div class="num">10+</div><div class="lbl" data-i18n="kpi3">магазинів під управлінням</div></div>
-        <div class="kpi"><div class="num">150+</div><div class="lbl" data-i18n="kpi4">торгових точок в асортименті</div></div>
-      </div>
-      <ul class="skills-list">
-        <li data-i18n="skill1">Управління мережею від 10 до 150+ ТТ</li>
-        <li data-i18n="skill2">Асортиментна стратегія та оптимізація</li>
-        <li data-i18n="skill3">Операційні процеси та регламенти</li>
-        <li data-i18n="skill4">KPI: прибуток, виручка, маржа</li>
-        <li data-i18n="skill5">Підбір і розвиток персоналу</li>
-        <li data-i18n="skill6">Запуск акцій і промо</li>
-      </ul>
-    </section>
-
-    <section id="now" class="panel now">
-      <h2 data-i18n="now">Нині</h2>
-      <div class="now-card">
-        <h3>🎯</h3>
-        <p data-i18n="nowText">
-          Відповідаю за розвиток вейп-напрямку та асортимент у 150+ ТТ.
-          Впроваджую нові акції, розширюю асортимент і координую роботу мережі.
-        </p>
+    <section class="mt-8" aria-labelledby="highlights">
+      <h2 id="highlights" class="text-2xl font-bold">Сильні сторони</h2>
+      <div class="mt-4 grid md:grid-cols-2 gap-6">
+        <div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><p class="text-slate-700 dark:text-slate-200">Керування асортиментом у 150+ ТТ: підбір SKU, планування поставок, запобігання «діркам» на вітрині.</p></div><div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><p class="text-slate-700 dark:text-slate-200">Процеси: повернення постачальнику, комплектація гліцерином/нікотином, чисті стандарти упаковки.</p></div><div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><p class="text-slate-700 dark:text-slate-200">Мерчандайзинг і промо: вітрини, креативи, інструкції для персоналу, презентації для партнерів.</p></div><div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><p class="text-slate-700 dark:text-slate-200">Аналітика: базові ABC/XYZ, звіти, контроль дефіциту картриджів/подів (XROS тощо).</p></div><div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><p class="text-slate-700 dark:text-slate-200">Технічний бекграунд: комфортно працюю з Google Sheets/Docs, ChatGPT, нейромережами для дизайну/аналізу.</p></div>
       </div>
     </section>
 
-    <section id="contact" class="panel contact">
-      <h2 data-i18n="contact">Контакти</h2>
-      <div class="cta-row">
-        <a href="https://t.me/Neykrus" class="btn primary">Telegram</a>
-        <a href="mailto:andrii@example.com" class="btn outline">Email</a>
+    <section class="mt-8" aria-labelledby="projects">
+      <h2 id="projects" class="text-2xl font-bold">Проєкти</h2>
+      <div class="mt-4 grid md:grid-cols-3 gap-6">
+        <div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><h3 class="font-semibold">Розвиток вейп-напрямку</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Вирівнювання представленості картриджів і POD-систем, робота з дефіцитом, підготовка повернень та планограм.</p></div><div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><h3 class="font-semibold">CBD / Wellness-зона</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Концепт зони знайомства з CBD та мікродозингом; фокус на безпечний сервіс і просвіту.</p></div><div class="card shadow-soft p-5 bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal><h3 class="font-semibold">Візуальні матеріали</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Плакати/інструкції для персоналу, промо-креативи у фірмовому стилі.</p></div>
+      </div>
+    </section>
+
+    <section class="mt-10 mb-16">
+      <div class="card shadow-soft p-6 bg-gradient-to-br from-sky-50 to-indigo-50 dark:from-slate-900 dark:to-slate-900 border border-slate-200 dark:border-slate-800 opacity-0 translate-y-2" data-reveal>
+        <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between gap-4">
+          <div>
+            <p class="text-lg font-semibold">Відкритий до співпраці</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Проєкти з асортименту, мерчандайзингу, запуску зон CBD/Wellness, аналітики та операційних процесів.</p>
+          </div>
+          <a href="mailto:andrii@example.com" class="inline-flex items-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 text-sm font-semibold">Написати лист</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="ftr">
-    <p>© Andrii Yakovenko — <span data-i18n="footer">відкритий до нових можливостей</span></p>
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="mx-auto max-w-6xl px-4 text-sm text-slate-500 dark:text-slate-400">
+      Оновлено 2025-09-18. © 2025 Andrii Yakovenko
+    </div>
   </footer>
 
-  <button id="backToTop" class="btt">↑</button>
-
-  <script src="assets/js/app.js"></script>
+  <script>
+    window.I18N = {"ua": {"name": "Андрій Яковенко", "tagline": "Менеджер роздрібного напрямку • Асортимент & розвиток мережі", "summary": "З 18 років у ритейлі. Перерви давали новий поштовх — зараз 25 і сфокусований на зростанні, якості асортименту та впорядкуванні процесів. Останні роки — вейп-напрямок: відповідаю за розвиток й асортимент у 150+ торгових точках, постачання, повернення, презентації, мерчандайзинг. Люблю працювати з ШІ, готовий до релокації.", "cta": "Скачати резюме (DOCX)"}, "en": {"name": "Andrii Yakovenko", "tagline": "Retail Manager • Assortment & Network Growth", "summary": "In retail since 18. Breaks gave me new momentum — now 25 and focused on growth, assortment quality and process discipline. Recent years: vape vertical — responsible for assortment and development across 150+ outlets, supply, returns, presentations, merchandising. I enjoy working with AI and I'm open to relocation.", "cta": "Download CV (DOCX)"}};
+  </script>
+  <script src="./script.js"></script>
 </body>
 </html>
