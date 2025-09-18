@@ -157,3 +157,8 @@ a{color:var(--brand)}
   :root:not([data-theme="dark"]) .nav-link:hover{ background:rgba(0,0,0,.06); }
   :root:not([data-theme="dark"]) .avatar{ border-color:rgba(0,0,0,.2); box-shadow:0 12px 36px rgba(0,0,0,.12); }
 }
+
+
+/* Make "Нині" block span across both columns */
+.full-span { grid-column: span 2; }
+@media (max-width: 840px){ .full-span { grid-column: span 1; } }
