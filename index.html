@@ -1,125 +1,113 @@
+
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang="ua">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Андрій Яковенко — Retail & Vape Lead</title>
-
-  <!-- SEO / Social -->
-  <meta name="description" content="Експерт розвитку ритейлу та вейп-напрямку. +22% revenue, +80% profit, керівництво 10+ точками." />
   <meta property="og:title" content="Andrii Yakovenko — Retail & Vape Lead" />
-  <meta property="og:description" content="Експерт розвитку ритейлу та вейп-напрямку. S.V Group, UVape, Vape Station, Moyo." />
+  <meta property="og:description" content="Retail & Vape Lead. +22% revenue, +80% profit, 10+ stores, 150+ locations." />
   <meta property="og:image" content="assets/img/og.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="." />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- Animated gradient background -->
-  <div class="bg" aria-hidden="true"></div>
-
+  <div class="bg"></div>
   <header class="site-header frosted">
     <a class="brand" href="#top">AY</a>
     <nav class="nav">
-      <a class="nav-link" href="#about">Про мене</a>
-      <a class="nav-link" href="#experience">Досвід</a>
-      <a class="nav-link" href="#highlights">Досягнення</a>
-      <a class="nav-link" href="#contact">Контакти</a>
+      <a class="nav-link" href="#about" data-i18n="about">Про мене</a>
+      <a class="nav-link" href="#experience" data-i18n="experience">Досвід</a>
+      <a class="nav-link" href="#skills" data-i18n="skills">Навички</a>
+      <a class="nav-link" href="#qualities" data-i18n="qualities">Якості</a>
+      <a class="nav-link" href="#credo" data-i18n="credo">Підхід</a>
+      <a class="nav-link" href="#goals" data-i18n="goals">Що шукаю</a>
+      <a class="nav-link" href="#highlights" data-i18n="highlights">Досягнення</a>
+      <a class="nav-link" href="#contact" data-i18n="contact">Контакти</a>
     </nav>
+    <div class="lang-switch">
+      <button id="langToggle">EN</button>
+    </div>
     <div class="cta">
-      <a class="btn ghost" href="assets/Andrii_Yakovenko_CV_UA.docx" download>Завантажити CV (UA)</a>
+      <a class="btn ghost" href="assets/CV_UA.docx" download>CV</a>
     </div>
   </header>
 
   <main id="top" class="container">
     <section id="hero" class="hero reveal">
-      <img class="avatar" src="assets/img/avatar.png" alt="Фото Андрія Яковенка" />
-      <h1>Андрій Яковенко</h1>
-      <p class="subtitle">Retail & Vape Lead · Growth & Operations</p>
-      <p class="lead">Від запчастин і професійних фотокамер до керування вейп-напрямком. Поєдную аналітику, чіткі процеси та роботу з командою, щоб перетворювати магазини на прибуткові системи.</p>
-      <div class="hero-actions">
-        <a href="#experience" class="btn primary">Подивитися досвід</a>
-        <a href="#contact" class="btn">Зв'язатися</a>
-      </div>
+      <img class="avatar" src="assets/img/avatar.png" alt="Фото" />
+      <h1 data-i18n="name">Андрій Яковенко</h1>
+      <p class="subtitle" data-i18n="title">Retail & Vape Lead · Growth & Operations</p>
+      <p class="lead" data-i18n="tagline">Від запчастин і фотокамер до керування вейп-напрямком. Поєдную аналітику, процеси та команду.</p>
     </section>
 
     <section id="about" class="section reveal">
-      <h2>Про мене</h2>
-      <p>Фахівець із розвитку ритейлу з універсальним бекграундом — продавав усе: від запчастин і побутової техніки до професійних фотокамер. Останні роки спеціалізуюсь на вейп-індустрії: будую масштабовані процеси, керую мульти-магазинними операціями, забезпечую стабільний ріст KPI.</p>
-      <p>Моя сильна сторона — поєднання <strong>аналітики</strong> з <strong>виконанням</strong>: читаю цифри, формую стратегію і доводжу команду до результату.</p>
+      <h2 data-i18n="about">Про мене</h2>
+      <p data-i18n="aboutText">Я — спеціаліст із розвитку ритейлу з понад 8-річним досвідом. Продавав усе — від запчастин і побутової техніки до професійних фотокамер. 
+      Останні роки сфокусувався на вейп-індустрії: будую масштабовані процеси, керую мульти-магазинними операціями та забезпечую стабільне зростання KPI. 
+      Зараз відповідаю за розвиток напрямку та управління асортиментом у 150+ торгових точках.</p>
     </section>
 
     <section id="experience" class="section reveal">
-      <h2>Досвід</h2>
+      <h2 data-i18n="experience">Досвід</h2>
       <div class="cards">
-        <article class="card hover-lift">
-          <h3>S.V Group</h3>
-          <ul>
-            <li><strong>+22% до виручки за перший місяць</strong>, підвищення маржинальності.</li>
-            <li>Запуск акцій, впровадження регламентів і стандартів.</li>
-          </ul>
-        </article>
-        <article class="card hover-lift">
-          <h3>UVape</h3>
-          <ul>
-            <li>Керував мережею <strong>10+ магазинів</strong>.</li>
-            <li>Подолав кадровий дефіцит, забезпечив стабільне зростання KPI.</li>
-          </ul>
-        </article>
-        <article class="card hover-lift">
-          <h3>Vape Station</h3>
-          <ul>
-            <li><strong>+80% прибутку за рік</strong> завдяки процесам і роботі команди.</li>
-          </ul>
-        </article>
-        <article class="card hover-lift">
-          <h3>Moyo</h3>
-          <ul>
-            <li>Демонстрував відмінні результати у перевірках «таємного покупця».</li>
-            <li>Високий NPS, швидке підвищення до заступника директора.</li>
-          </ul>
-        </article>
+        <article class="card hover-lift"><h3>S.V Group</h3><p>+22% до виручки за перший місяць, запуск акцій і регламентів.</p></article>
+        <article class="card hover-lift"><h3>UVape</h3><p>Керував мережею 10+ магазинів, подолав кадровий дефіцит.</p></article>
+        <article class="card hover-lift"><h3>Vape Station</h3><p>+80% прибутку за рік завдяки оптимізації процесів.</p></article>
+        <article class="card hover-lift"><h3>Moyo</h3><p>Високий NPS, відмінні результати «таємного покупця», швидке підвищення до замдиректора.</p></article>
+        <article class="card hover-lift"><h3>Нині</h3><p>Відповідаю за розвиток вейп-напрямку та асортимент у 150+ ТТ.</p></article>
       </div>
     </section>
 
+    <section id="skills" class="section reveal">
+      <h2 data-i18n="skills">Навички</h2>
+      <ul>
+        <li data-i18n="skill1">Управління мережею від 10 до 150+ ТТ</li>
+        <li data-i18n="skill2">Асортиментна стратегія та оптимізація</li>
+        <li data-i18n="skill3">Операційні процеси та регламенти</li>
+        <li data-i18n="skill4">KPI: прибуток, виручка, маржа</li>
+        <li data-i18n="skill5">Робота з командами та розвиток персоналу</li>
+        <li data-i18n="skill6">Запуск акцій і промо-кампаній</li>
+      </ul>
+    </section>
+
+    <section id="qualities" class="section reveal">
+      <h2 data-i18n="qualities">Особисті якості</h2>
+      <ul>
+        <li data-i18n="qual1">Системність і дисципліна</li>
+        <li data-i18n="qual2">Адаптивність до змін ринку</li>
+        <li data-i18n="qual3">Баланс аналітики та практики</li>
+        <li data-i18n="qual4">Орієнтація на клієнта та результат</li>
+      </ul>
+    </section>
+
+    <section id="credo" class="section reveal">
+      <h2 data-i18n="credo">Професійне кредо</h2>
+      <p data-i18n="credoText">Мій підхід простий: кожен бізнес можна зробити прибутковим, якщо зрозуміти клієнта, вибудувати процеси та дати команді чіткі інструменти.</p>
+    </section>
+
+    <section id="goals" class="section reveal">
+      <h2 data-i18n="goals">Що я шукаю</h2>
+      <p data-i18n="goalsText">Мене цікавлять ролі, де можна масштабувати напрямки, керувати асортиментом, будувати процеси й досягати вимірюваних результатів. Важлива командна атмосфера й можливість впливати на розвиток бізнесу.</p>
+    </section>
+
     <section id="highlights" class="section reveal">
-      <h2>Ключові досягнення</h2>
+      <h2 data-i18n="highlights">Ключові досягнення</h2>
       <div class="grid">
-        <div class="kpi hover-lift">
-          <div class="kpi-num">+80%</div>
-          <div class="kpi-label">прибутку за рік</div>
-        </div>
-        <div class="kpi hover-lift">
-          <div class="kpi-num">10+</div>
-          <div class="kpi-label">магазинів під управлінням</div>
-        </div>
-        <div class="kpi hover-lift">
-          <div class="kpi-num">+22%</div>
-          <div class="kpi-label">виручки за 1-й місяць</div>
-        </div>
-        <div class="kpi hover-lift">
-          <div class="kpi-num">NPS</div>
-          <div class="kpi-label">стабільно високий</div>
-        </div>
+        <div class="kpi hover-lift"><div class="kpi-num">+22%</div><div class="kpi-label">виручки</div></div>
+        <div class="kpi hover-lift"><div class="kpi-num">+80%</div><div class="kpi-label">прибутку</div></div>
+        <div class="kpi hover-lift"><div class="kpi-num">10+</div><div class="kpi-label">магазинів</div></div>
+        <div class="kpi hover-lift"><div class="kpi-num">150+</div><div class="kpi-label">ТТ асортимент</div></div>
       </div>
     </section>
 
     <section id="contact" class="section reveal">
-      <h2>Контакти</h2>
-      <p>Готовий до співпраці в ритейлі та e‑commerce, зокрема у вейп‑напрямку. Напишіть мені у Telegram/LinkedIn або на email.</p>
-      <div class="hero-actions">
-        <a class="btn ghost" href="https://t.me/Neykrus" aria-label="Telegram" rel="noopener">Telegram</a>
-        <a class="btn ghost" href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a class="btn ghost" href="mailto:andrii@example.com">Email</a>
-      </div>
+      <h2 data-i18n="contact">Контакти</h2>
+      <p data-i18n="contactText">Готовий долучитися до розвитку компанії. Напишіть мені у Telegram або на пошту.</p>
+      <div><a class="btn ghost" href="https://t.me/Neykrus">Telegram</a> <a class="btn ghost" href="mailto:andrii@example.com">Email</a></div>
     </section>
   </main>
 
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">⌃</button>
-
+  <button id="backToTop" class="back-to-top">⌃</button>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
