@@ -74,9 +74,9 @@ a{color:inherit}
 @media (max-width:700px){.skills-list{grid-template-columns:1fr}}
 
 /* Projects */
-.projects .proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media (max-width:1100px){.projects .proj-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:700px){.projects .proj-grid{grid-template-columns:1fr}}
+.achievements .proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:1100px){.achievements .proj-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.achievements .proj-grid{grid-template-columns:1fr}}
 .proj-card{background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:14px 14px;
   transition:transform .25s cubic-bezier(.22,1.61,.36,1), box-shadow .18s ease, border-color .18s ease}
 .proj-card:hover{transform:translateY(-4px) scale(1.02); box-shadow:10px 10px 0 color-mix(in oklab,#000 35%,transparent); border-color: color-mix(in oklab,var(--accent) 40%, var(--line));}
