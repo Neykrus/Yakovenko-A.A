@@ -162,3 +162,7 @@ a{color:var(--brand)}
 /* Make "Нині" block span across both columns */
 .full-span { grid-column: span 2; }
 @media (max-width: 840px){ .full-span { grid-column: span 1; } }
+
+
+/* Ensure full-span cards span across grid */
+.cards .full-span { grid-column: 1 / -1; }
