@@ -207,3 +207,9 @@ a{color:var(--brand)}
   background: linear-gradient(135deg,rgba(10,132,255,.08),rgba(100,210,255,.1));
   border: 1px solid rgba(0,122,255,.3);
 }
+
+
+/* Guarantee that the 'Нині' card spans the entire row in the .cards grid */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.cards .card.full-span { grid-column: 1 / -1 !important; }
+@media (max-width: 840px){ .cards .card.full-span { grid-column: 1 / -1; } }

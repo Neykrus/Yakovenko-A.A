@@ -84,23 +84,27 @@ toggle.addEventListener('click',()=>{
 });
 
 
-// THEME TOGGLE
+// THEME TOGGLE (two-state: light <-> dark)
 (function(){
   const root = document.documentElement;
-  const key = "theme-pref"; // "light" | "dark" | null (system)
+  const key = "theme-pref"; // "light" | "dark"
   const btn = document.getElementById("themeToggle");
   const apply = (mode)=>{
     if(mode==="light"){ root.setAttribute("data-theme","light"); btn.textContent="🌙"; }
-    else if(mode==="dark"){ root.setAttribute("data-theme","dark"); btn.textContent="☀︎"; }
-    else { root.removeAttribute("data-theme"); btn.textContent="☀︎/🌙"; }
+    else { root.setAttribute("data-theme","dark"); btn.textContent="☀︎"; }
   };
   try{
-    const saved = localStorage.getItem(key);
+    let saved = localStorage.getItem(key);
+    if(!saved){
+      // default based on system
+      const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+      saved = prefersLight ? "light" : "dark";
+      localStorage.setItem(key, saved);
+    }
     apply(saved);
     btn.addEventListener("click", ()=>{
-      const current = root.getAttribute("data-theme");
-      const next = current==="light" ? "dark" : current==="dark" ? null : "light";
-      if(next) localStorage.setItem(key, next); else localStorage.removeItem(key);
+      const next = (localStorage.getItem(key)==="light") ? "dark" : "light";
+      localStorage.setItem(key, next);
       apply(next);
     });
   }catch(e){ /* ignore storage errors */ }
