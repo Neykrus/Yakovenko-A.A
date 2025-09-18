@@ -1,4 +1,7 @@
 
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+
 // Smooth anchor scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
@@ -69,4 +72,7 @@ langBtn.addEventListener('click',()=>{
 });
 
 // Animations helpers
-@noop;
+
+
+  } catch(e) { console.error('App init error:', e); }
+});
