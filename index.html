@@ -329,48 +329,49 @@
         }
         
         .contact-card {
-            background: var(--card-bg);
+            background: var(--primary);
             border-radius: 15px;
             padding: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             transition: var(--transition);
-            color: #333;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
         
         .contact-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: var(--primary-dark);
         }
         
         .contact-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: white;
             margin-bottom: 20px;
         }
         
         .contact-info {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            color: #333;
+            color: white;
         }
         
         .contact-link {
-            color: var(--dark);
+            color: white;
             text-decoration: none;
             display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 30px;
             transition: var(--transition);
-            border: 1px solid var(--primary);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .contact-link:hover {
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: var(--primary);
             transform: translateY(-3px);
         }
         
@@ -500,7 +501,7 @@
         <div id="particles-js"></div>
         <div class="container">
             <div class="header-content">
-                <img src="https://static.work.ua/resumes_photo/5/3/9/4/5394735_middle.jpg" alt="Андрій Яковенко" class="profile-image">
+                <img src="profile.jpg" alt="Андрій Яковенко" class="profile-image" onerror="this.src='https://static.work.ua/resumes_photo/5/3/9/4/5394735_middle.jpg'">
                 <h1 class="lang-ua">Андрій Яковенко</h1>
                 <h1 class="lang-en">Andrii Yakovenko</h1>
                 <p class="title lang-ua">Експерт ритейлу з фокусом на зростання та інновації</p>
@@ -552,10 +553,26 @@
             
             <div class="timeline">
                 <div class="timeline-item animate">
+                    <div class="job-title lang-ua">Менеджер з розвитку</div>
+                    <div class="job-title lang-en">Development Manager</div>
+                    <div class="company">S.V. Group</div>
+                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Січень 2024 – Нині</span><span class="lang-en">January 2024 – Present</span></div>
+                    <ul class="job-description">
+                        <li class="lang-ua">+22% виручки за місяць</li>
+                        <li class="lang-ua">Оптимізував асортимент з AI</li>
+                        <li class="lang-ua">Пряме управління 15 торговими точками</li>
+                        
+                        <li class="lang-en">+22% revenue in a month</li>
+                        <li class="lang-en">Optimized assortment with AI</li>
+                        <li class="lang-en">Direct management of 15 trade points</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item animate">
                     <div class="job-title lang-ua">Регіональний адміністратор</div>
                     <div class="job-title lang-en">Regional Administrator</div>
                     <div class="company">UVape</div>
-                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Жовтень 2024 – Нині</span><span class="lang-en">October 2024 – Present</span></div>
+                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Жовтень 2023 – Грудень 2023</span><span class="lang-en">October 2023 – December 2023</span></div>
                     <ul class="job-description">
                         <li class="lang-ua">Відповідаю за асортимент 150 торгових точок</li>
                         <li class="lang-ua">Аудит ТТ, інвентаризації, аналіз ринку з AI</li>
@@ -570,26 +587,10 @@
                 </div>
                 
                 <div class="timeline-item animate">
-                    <div class="job-title lang-ua">Менеджер з розвитку</div>
-                    <div class="job-title lang-en">Development Manager</div>
-                    <div class="company">S.V. Group</div>
-                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Січень 2024 – Вересень 2024</span><span class="lang-en">January 2024 – September 2024</span></div>
-                    <ul class="job-description">
-                        <li class="lang-ua">+22% виручки за місяць</li>
-                        <li class="lang-ua">Оптимізував асортимент з AI</li>
-                        <li class="lang-ua">Пряме управління 15 торговими точками</li>
-                        
-                        <li class="lang-en">+22% revenue in a month</li>
-                        <li class="lang-en">Optimized assortment with AI</li>
-                        <li class="lang-en">Direct management of 15 trade points</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item animate">
                     <div class="job-title lang-ua">Керуючий магазином</div>
                     <div class="job-title lang-en">Store Manager</div>
                     <div class="company">Vape Station</div>
-                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Квітень 2023 – Вересень 2024</span><span class="lang-en">April 2023 – September 2024</span></div>
+                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Квітень 2023 – Вересень 2023</span><span class="lang-en">April 2023 – September 2023</span></div>
                     <ul class="job-description">
                         <li class="lang-ua">Збільшив прибуток на 80% за рік</li>
                         <li class="lang-ua">Розробив регламенти та SMM-контент</li>
