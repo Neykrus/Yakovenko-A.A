@@ -1,115 +1,516 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Андрій Яковенко - Експерт ритейлу</title>
     <meta name="description" content="Андрій Яковенко: Експерт ритейлу з досвідом управління, AI-оптимізації та зростання бізнесу.">
-    <meta name="keywords" content="Андрій Яковенко, ритейл, AI оптимізація, управління мережами, Полтава, Україна">
-    <meta name="author" content="Андрій Яковенко">
-    <!-- Open Graph для соціальних мереж -->
-    <meta property="og:title" content="Андрій Яковенко - Експерт ритейлу">
-    <meta property="og:description" content="25-річний експерт із Полтави, що спеціалізується на управлінні мережами, AI-оптимізації та зростанні бізнесу.">
-    <meta property="og:image" content="https://static.work.ua/resumes_photo/5/3/9/4/5394735_middle.jpg">
-    <meta property="og:url" content="https://yourwebsite.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Андрій Яковенко",
-        "jobTitle": "Експерт ритейлу",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Полтава",
-            "addressCountry": "UA"
-        },
-        "email": "mailto:neykrus@gmail.com",
-        "telephone": "+380993586621",
-        "url": "https://www.work.ua/resumes/5394735/",
-        "image": "https://static.work.ua/resumes_photo/5/3/9/4/5394735_middle.jpg"
-    }
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #000000;
+            --primary-dark: #333333;
+            --secondary: #666666;
+            --dark: #ffffff;
+            --light: #0a0a0a;
+            --gray: #888888;
+            --success: #444444;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f9f9f9 0%, #e8e8e8 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 30px;
+            transition: var(--transition);
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .header-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 30px;
+            position: relative;
+            width: 50%;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            color: #333;
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            transform-origin: right center;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform-origin: left center;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid var(--dark);
+            border-radius: 50%;
+            top: 40px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .job-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .job-date {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .job-description {
+            margin-top: 15px;
+        }
+        
+        .job-description li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            color: #444;
+        }
+        
+        .job-description li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+            color: #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .skill-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .skill-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: var(--transition);
+            color: #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .contact-link {
+            color: var(--dark);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--primary);
+        }
+        
+        .contact-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Language Switch */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(0, 0, 0, 0.9);
+            margin-top: 80px;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .header-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Particle Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Language-specific styles */
+        .lang-en {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <!-- Навігаційна панель -->
-    <nav class="navbar">
-        <div class="container">
-            <ul class="nav-links">
-                <li><a href="#about" class="lang-ua">Про мене</a><a href="#about" class="lang-en">About</a></li>
-                <li><a href="#experience" class="lang-ua">Досвід</a><a href="#experience" class="lang-en">Experience</a></li>
-                <li><a href="#skills" class="lang-ua">Навички</a><a href="#skills" class="lang-en">Skills</a></li>
-                <li><a href="#education" class="lang-ua">Освіта</a><a href="#education" class="lang-en">Education</a></li>
-                <li><a href="#contact" class="lang-ua">Контакти</a><a href="#contact" class="lang-en">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Перемикач мови -->
-    <div class="lang-switch" role="navigation" aria-label="Перемикач мови">
-        <button class="lang-btn active" onclick="switchLang('ua')" aria-label="Переключити на українську">UA</button>
-        <button class="lang-btn" onclick="switchLang('en')" aria-label="Переключити на англійську">EN</button>
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="switchLang('ua')">UA</button>
+        <button class="lang-btn" onclick="switchLang('en')">EN</button>
     </div>
 
     <header>
         <div id="particles-js"></div>
         <div class="container">
             <div class="header-content">
-                <img src="https://static.work.ua/resumes_photo/5/3/9/4/5394735_middle.jpg" alt="Фото профілю Андрія Яковенка" class="profile-image" loading="lazy">
+                <img src="https://static.work.ua/resumes_photo/5/3/9/4/5394735_middle.jpg" alt="Андрій Яковенко" class="profile-image">
                 <h1 class="lang-ua">Андрій Яковенко</h1>
                 <h1 class="lang-en">Andrii Yakovenko</h1>
                 <p class="title lang-ua">Експерт ритейлу з фокусом на зростання та інновації</p>
                 <p class="title lang-en">Retail Expert Focused on Growth and Innovation</p>
+                
                 <div class="header-badges">
                     <div class="badge"><i class="fas fa-chart-line"></i> <span class="lang-ua">Зростання прибутку на 80%</span><span class="lang-en">80% Profit Growth</span></div>
                     <div class="badge"><i class="fas fa-robot"></i> <span class="lang-ua">AI-оптимізація</span><span class="lang-en">AI Optimization</span></div>
                     <div class="badge"><i class="fas fa-network-wired"></i> <span class="lang-ua">Управління мережами</span><span class="lang-en">Network Management</span></div>
                 </div>
-                <a href="resume.pdf" class="contact-link lang-ua" download>Завантажити резюме</a>
-                <a href="resume.pdf" class="contact-link lang-en" download>Download Resume</a>
             </div>
         </div>
     </header>
@@ -118,9 +519,11 @@
         <div class="container">
             <h2 class="section-title lang-ua">Про мене</h2>
             <h2 class="section-title lang-en">About Me</h2>
+            
             <div class="about-content animate">
                 <p class="lang-ua">25-річний експерт з Полтави з 7-річним досвідом у ритейлі. Спеціалізуюся на управлінні мережами, оптимізації процесів та впровадженні AI. Збільшую виручку, будую сильні команди та забезпечую стабільне зростання. Відкритий до нових можливостей у продажах та управлінні.</p>
                 <p class="lang-en">25-year-old expert from Poltava with 7 years in retail. Specialize in network management, process optimization, and AI implementation. Increase revenue, build strong teams, and ensure stable growth. Open to new opportunities in sales and management.</p>
+                
                 <div class="skill-stats" style="margin-top: 30px;">
                     <div class="stat">
                         <div class="stat-number">7+</div>
@@ -133,9 +536,9 @@
                         <div class="stat-label lang-en">trade points</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label lang-ua">управлінських проектів</div>
-                        <div class="stat-label lang-en">management projects</div>
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label lang-ua">пряме управління ТТ</div>
+                        <div class="stat-label lang-en">direct TT management</div>
                     </div>
                 </div>
             </div>
@@ -146,6 +549,7 @@
         <div class="container">
             <h2 class="section-title lang-ua">Досвід роботи</h2>
             <h2 class="section-title lang-en">Work Experience</h2>
+            
             <div class="timeline">
                 <div class="timeline-item animate">
                     <div class="job-title lang-ua">Регіональний адміністратор</div>
@@ -153,26 +557,18 @@
                     <div class="company">UVape</div>
                     <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Жовтень 2024 – Нині</span><span class="lang-en">October 2024 – Present</span></div>
                     <ul class="job-description">
+                        <li class="lang-ua">Відповідаю за асортимент 150 торгових точок</li>
                         <li class="lang-ua">Аудит ТТ, інвентаризації, аналіз ринку з AI</li>
                         <li class="lang-ua">Подолав дефіцит кадрів, забезпечив ріст KPI</li>
                         <li class="lang-ua">Робота з 1C, звітами та логістикою</li>
+                        
+                        <li class="lang-en">Responsible for assortment of 150 trade points</li>
                         <li class="lang-en">TT audits, inventories, AI market analysis</li>
                         <li class="lang-en">Overcame staff shortages, ensured KPI growth</li>
                         <li class="lang-en">Work with 1C, reports, and logistics</li>
                     </ul>
                 </div>
-                <div class="timeline-item animate">
-                    <div class="job-title lang-ua">Керуючий магазином</div>
-                    <div class="job-title lang-en">Store Manager</div>
-                    <div class="company">Vape Station</div>
-                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Квітень 2023 – Вересень 2024</span><span class="lang-en">April 2023 – September 2024</span></div>
-                    <ul class="job-description">
-                        <li class="lang-ua">Збільшив прибуток на 80% за рік</li>
-                        <li class="lang-ua">Розробив регламенти та SMM-контент</li>
-                        <li class="lang-en">Increased profit by 80% in a year</li>
-                        <li class="lang-en">Developed regulations and SMM content</li>
-                    </ul>
-                </div>
+                
                 <div class="timeline-item animate">
                     <div class="job-title lang-ua">Менеджер з розвитку</div>
                     <div class="job-title lang-en">Development Manager</div>
@@ -181,10 +577,28 @@
                     <ul class="job-description">
                         <li class="lang-ua">+22% виручки за місяць</li>
                         <li class="lang-ua">Оптимізував асортимент з AI</li>
+                        <li class="lang-ua">Пряме управління 15 торговими точками</li>
+                        
                         <li class="lang-en">+22% revenue in a month</li>
                         <li class="lang-en">Optimized assortment with AI</li>
+                        <li class="lang-en">Direct management of 15 trade points</li>
                     </ul>
                 </div>
+                
+                <div class="timeline-item animate">
+                    <div class="job-title lang-ua">Керуючий магазином</div>
+                    <div class="job-title lang-en">Store Manager</div>
+                    <div class="company">Vape Station</div>
+                    <div class="job-date"><i class="far fa-calendar-alt"></i> <span class="lang-ua">Квітень 2023 – Вересень 2024</span><span class="lang-en">April 2023 – September 2024</span></div>
+                    <ul class="job-description">
+                        <li class="lang-ua">Збільшив прибуток на 80% за рік</li>
+                        <li class="lang-ua">Розробив регламенти та SMM-контент</li>
+                        
+                        <li class="lang-en">Increased profit by 80% in a year</li>
+                        <li class="lang-en">Developed regulations and SMM content</li>
+                    </ul>
+                </div>
+                
                 <div class="timeline-item animate">
                     <div class="job-title lang-ua">Заступник директора</div>
                     <div class="job-title lang-en">Deputy Director</div>
@@ -193,6 +607,7 @@
                     <ul class="job-description">
                         <li class="lang-ua">Найкращі продажі та NPS</li>
                         <li class="lang-ua">Керував командою</li>
+                        
                         <li class="lang-en">Top sales and NPS</li>
                         <li class="lang-en">Managed team</li>
                     </ul>
@@ -205,6 +620,7 @@
         <div class="container">
             <h2 class="section-title lang-ua">Навички та досягнення</h2>
             <h2 class="section-title lang-en">Skills & Achievements</h2>
+            
             <div class="skills-container">
                 <div class="skill-card animate">
                     <div class="skill-icon"><i class="fas fa-chart-pie"></i></div>
@@ -213,6 +629,7 @@
                     <p class="lang-ua">Аналіз ринкових тенденцій, робота з BI-системами, прогнозування продажів</p>
                     <p class="lang-en">Market trend analysis, work with BI systems, sales forecasting</p>
                 </div>
+                
                 <div class="skill-card animate">
                     <div class="skill-icon"><i class="fas fa-robot"></i></div>
                     <h3 class="skill-title lang-ua">AI-оптимізація</h3>
@@ -220,6 +637,7 @@
                     <p class="lang-ua">Впровадження штучного інтелекту для автоматизації та покращення ефективності</p>
                     <p class="lang-en">Implementation of artificial intelligence for automation and efficiency improvement</p>
                 </div>
+                
                 <div class="skill-card animate">
                     <div class="skill-icon"><i class="fas fa-users"></i></div>
                     <h3 class="skill-title lang-ua">Управління командою</h3>
@@ -227,6 +645,7 @@
                     <p class="lang-ua">Побудова та мотивація команд, навчання персоналу, розвиток лідерських якостей</p>
                     <p class="lang-en">Building and motivating teams, staff training, leadership development</p>
                 </div>
+                
                 <div class="skill-card animate">
                     <div class="skill-icon"><i class="fas fa-store"></i></div>
                     <h3 class="skill-title lang-ua">Розвиток мереж</h3>
@@ -242,11 +661,13 @@
         <div class="container">
             <h2 class="section-title lang-ua">Освіта</h2>
             <h2 class="section-title lang-en">Education</h2>
+            
             <div class="about-content animate">
                 <div class="job-title lang-ua">ПолтНТУ імені Юрія Кондратюка</div>
                 <div class="job-title lang-en">PoltNTU named after Yuri Kondratyuk</div>
                 <div class="company lang-ua">Фінанси (2018–2020)</div>
                 <div class="company lang-en">Finance (2018–2020)</div>
+                
                 <div style="margin-top: 20px;">
                     <div class="job-title lang-ua">Коледж ПДАА</div>
                     <div class="job-title lang-en">PDAA College</div>
@@ -261,6 +682,7 @@
         <div class="container">
             <h2 class="section-title lang-ua">Контакти</h2>
             <h2 class="section-title lang-en">Contacts</h2>
+            
             <div class="contact-container">
                 <div class="contact-card animate">
                     <div class="contact-icon"><i class="fas fa-phone"></i></div>
@@ -270,6 +692,7 @@
                     <a href="tel:+380993586621" class="contact-link lang-ua">Зателефонувати</a>
                     <a href="tel:+380993586621" class="contact-link lang-en">Call now</a>
                 </div>
+                
                 <div class="contact-card animate">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <h3 class="lang-ua">Email</h3>
@@ -278,6 +701,7 @@
                     <a href="mailto:neykrus@gmail.com" class="contact-link lang-ua">Написати</a>
                     <a href="mailto:neykrus@gmail.com" class="contact-link lang-en">Send email</a>
                 </div>
+                
                 <div class="contact-card animate">
                     <div class="contact-icon"><i class="fas fa-globe"></i></div>
                     <h3 class="lang-ua">Онлайн-резюме</h3>
@@ -297,10 +721,88 @@
         </div>
     </footer>
 
-    <!-- Кнопка "Вгору" -->
-    <button class="back-to-top" aria-label="Повернутися вгору">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="scripts.js" defer></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#000000" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.3, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#000000",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+            
+            // Initialize language to Ukrainian
+            switchLang('ua');
+            
+            // Add scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('section .animate').forEach(section => {
+                observer.observe(section);
+            });
+        });
+        
+        function switchLang(lang) {
+            // Hide all language-specific elements
+            document.querySelectorAll('[class^="lang-"]').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show elements for selected language
+            document.querySelectorAll('.lang-' + lang).forEach(el => {
+                el.style.display = 'block';
+            });
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
+            
+            // Update document language attribute
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
