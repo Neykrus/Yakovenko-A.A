@@ -4,7 +4,7 @@
     --secondary: #f59e0b;
     --dark: #0f172a;
     --light: #f8fafc;
-    --gray: #94a3b8; /* Increased contrast for accessibility */
+    --gray: #94a3b8; /* Збільшено контрастність для доступності */
     --success: #10b981;
     --card-bg: rgba(255, 255, 255, 0.05);
     --transition: all 0.3s ease;
@@ -30,7 +30,7 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation Bar */
+/* Навігаційна панель */
 .navbar {
     position: sticky;
     top: 0;
@@ -60,7 +60,7 @@ body {
     color: var(--primary);
 }
 
-/* Header Styles */
+/* Стилі заголовка */
 header {
     min-height: 100vh;
     display: flex;
@@ -68,6 +68,7 @@ header {
     position: relative;
     overflow: hidden;
     padding: 80px 0;
+    z-index: 1; /* Забезпечуємо видимість частинок */
 }
 
 .header-content {
@@ -132,7 +133,7 @@ h1 {
     gap: 8px;
 }
 
-/* Section Styles */
+/* Стилі секцій */
 section {
     padding: 80px 0;
 }
@@ -160,7 +161,7 @@ section {
     border-radius: 3px;
 }
 
-/* About Section */
+/* Секція "Про мене" */
 .about-content {
     background: var(--card-bg);
     border-radius: 20px;
@@ -171,7 +172,7 @@ section {
     margin-bottom: 30px;
 }
 
-/* Experience Section */
+/* Секція "Досвід" */
 .timeline {
     position: relative;
     max-width: 900px;
@@ -279,7 +280,7 @@ section {
     color: var(--secondary);
 }
 
-/* Skills Section */
+/* Секція "Навички" */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -338,7 +339,7 @@ section {
     color: var(--gray);
 }
 
-/* Contact Section */
+/* Секція "Контакти" */
 .contact-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -389,12 +390,12 @@ section {
     transform: translateY(-3px);
 }
 
-/* Language Switch */
+/* Перемикач мови */
 .lang-switch {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 1001; /* Вище за навігацію */
     display: flex;
     background: var(--card-bg);
     border-radius: 30px;
@@ -424,7 +425,7 @@ section {
     outline-offset: 2px;
 }
 
-/* Footer */
+/* Футер */
 footer {
     text-align: center;
     padding: 40px 0;
@@ -432,7 +433,7 @@ footer {
     margin-top: 80px;
 }
 
-/* Back to Top Button */
+/* Кнопка "Вгору" */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -460,7 +461,7 @@ footer {
     background: var(--primary-dark);
 }
 
-/* Animations */
+/* Анімації */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -470,16 +471,17 @@ footer {
     animation: fadeIn 1s ease forwards;
 }
 
-/* Particle Background */
+/* Фон із частинками */
 #particles-js {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 0; /* Під заголовком, але видно */
 }
 
-/* Responsive Design */
+/* Адаптивність */
 @media (max-width: 992px) {
     h1 {
         font-size: 3rem;
@@ -519,8 +521,8 @@ footer {
         font-size: 2.5rem;
     }
 
-    .section-title {
-        font-size: 2rem;
+    .title {
+        font-size: 1.3rem; /* Зменшено для мобільних */
     }
 
     .header-badges {
@@ -531,5 +533,9 @@ footer {
     .skills-container,
     .contact-container {
         grid-template-columns: 1fr;
+    }
+
+    #particles-js {
+        height: 120%; /* Більше частинок для мобільних */
     }
 }

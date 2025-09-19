@@ -1,11 +1,16 @@
-// Initialize particles.js
+// Ініціалізація particles.js
 document.addEventListener('DOMContentLoaded', () => {
+    if (typeof particlesJS === 'undefined') {
+        console.error('particles.js не завантажено. Перевірте підключення скрипту.');
+        return;
+    }
+
     particlesJS('particles-js', {
         particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
+            number: { value: 100, density: { enable: true, value_area: 800 } }, // Збільшено кількість частинок
             color: { value: "#3b82f6" },
             shape: { type: "circle" },
-            opacity: { value: 0.5, random: true },
+            opacity: { value: 0.6, random: true }, // Збільшено видимість
             size: { value: 3, random: true },
             line_linked: {
                 enable: true,
@@ -16,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             move: {
                 enable: true,
-                speed: 2,
+                speed: 3, // Прискорено рух
                 direction: "none",
                 random: true,
                 straight: false,
@@ -35,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         retina_detect: true
     });
 
-    // Initialize language from localStorage or default to Ukrainian
+    // Ініціалізація мови з localStorage або за замовчуванням українська
     const savedLang = localStorage.getItem('language') || 'ua';
     switchLang(savedLang);
 
-    // Smooth scrolling for anchor links
+    // Плавна прокрутка для якірних посилань
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
@@ -48,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer for animations
+    // Intersection Observer для анімацій
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -67,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // Back to Top button visibility
+    // Кнопка "Вгору"
     const backToTop = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
@@ -82,27 +87,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Language switch function
+// Функція перемикання мови
 function switchLang(lang) {
-    // Hide all language-specific elements
     document.querySelectorAll('[class^="lang-"]').forEach(el => {
         el.style.display = 'none';
     });
 
-    // Show elements for selected language
     document.querySelectorAll(`.lang-${lang}`).forEach(el => {
         el.style.display = 'block';
     });
 
-    // Update active button
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     document.querySelector(`[onclick="switchLang('${lang}')"]`).classList.add('active');
 
-    // Update document language attribute
     document.documentElement.lang = lang;
-
-    // Save language preference
     localStorage.setItem('language', lang);
 }
